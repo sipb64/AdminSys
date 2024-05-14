@@ -1,5 +1,11 @@
 # Rendu Capture Ecran Install LAB
 
+## Verification Hash Iso Debian
+
+<p align="center">
+    <img src="./Hash.png" alt="Hash" style="width: 800px;" />
+</p>
+
 ## Status DNS et WEB
 
 <p align="center">
