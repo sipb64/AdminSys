@@ -33,9 +33,16 @@
 </p>
 
 <p align="center">
+    <img src="./ROproof.png" alt="ROproof" style="width: 800px;" />
+</p>
+
+<p align="center">
     <img src="./PartageRWSA.png" alt="PartageRWSA" style="width: 800px;" />
 </p>
 
+<p align="center">
+    <img src="./RWproof.png" alt="RWproof" style="width: 800px;" />
+</p>
 ## Nombre d'utilisateurs contenus dans l'AD
 
 <p align="center">
