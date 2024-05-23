@@ -156,6 +156,16 @@
 
 ## 21. Attaques connues sur NetLM
 
+### Attaques par force brute : En raison de la faible complexité des hachages LM, il est relativement facile de les casser en utilisant des attaques par force brute. Les hachages LM sont créés en divisant le mot de passe en deux parties de 7 caractères chacune, ce qui rend le processus de cassage plus rapide.
+
+### Attaques par dictionnaire : Les attaques par dictionnaire sont également efficaces contre les hachages LM. Dans ce type d'attaque, un attaquant utilise un fichier de mots de passe couramment utilisés (appelé dictionnaire) pour essayer de trouver le mot de passe correspondant au hachage.
+
+### Attaques de downgrade : Dans une attaque de downgrade, un attaquant force un système à utiliser un protocole d'authentification plus ancien et moins sécurisé, comme NetLM au lieu de NTLM. Cela peut être fait en envoyant des paquets de réponse spécialement conçus à un système cible.
+
+### Attaques de récupération de mot de passe : Dans les versions de Windows qui utilisent NetLM, les mots de passe sont stockés localement dans un fichier appelé SAM (Security Account Manager). Si un attaquant peut accéder à ce fichier, il peut utiliser des outils spéciaux pour extraire les mots de passe.
+
+### Attaques de rejeu : Dans une attaque de rejeu, un attaquant intercepte des données d'authentification valides (comme un hachage NetLM) et les utilise ensuite pour se faire passer pour un utilisateur légitime. Ce type d'attaque peut être particulièrement efficace sur les réseaux non chiffrés.
+
 ## 22. Capturer une authentification WinRM (Vous pouvez utiliser EvilWinRM si nécessaire côté client.)
 
 ## 23. Capturer une authentification SSH ou SFTP (mettre en place le service si nécessaire)
@@ -163,6 +173,13 @@
 ## 24. Intercepter un fichier au travers du protocole SMB
 
 ## 25. Comment proteger l'authenticité et la confidentialité d'un partage SMB ?
+
+- Utilisez des mots de passe forts
+- Activez le chiffrement
+- Utilisez la signature SMB
+- Limitez l'accès au partage SMB
+- Mettez à jour vos systèmes
+- Utilisez un VPN
 
 ## B1. Déchiffrer le traffic TLS en important la clé privée du certificat dans Wireshark
 
