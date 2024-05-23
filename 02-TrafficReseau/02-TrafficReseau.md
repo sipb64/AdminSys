@@ -152,7 +152,15 @@
 
 ## 19. Capture une authentification Kerberos (mettre en place le service si nécessaire)
 
+<p align="center">
+    <img src="./Kerberos.png" alt="Kerberos" style="width: 800px;" />
+</p>
+
 ## 20. Capturer une authentification RDP (mettre en place le service si nécessaire)
+
+<p align="center">
+    <img src="./RDP.png" alt="RDP" style="width: 800px;" />
+</p>
 
 ## 21. Attaques connues sur NetLM
 
@@ -168,9 +176,21 @@
 
 ## 22. Capturer une authentification WinRM (Vous pouvez utiliser EvilWinRM si nécessaire côté client.)
 
+<p align="center">
+    <img src="./WINRM.png" alt="WINRM" style="width: 800px;" />
+</p>
+
 ## 23. Capturer une authentification SSH ou SFTP (mettre en place le service si nécessaire)
 
+<p align="center">
+    <img src="./SSH.png" alt="SSH" style="width: 800px;" />
+</p>
+
 ## 24. Intercepter un fichier au travers du protocole SMB
+
+<p align="center">
+    <img src="./SMB.png" alt="SMB" style="width: 800px;" />
+</p>
 
 ## 25. Comment proteger l'authenticité et la confidentialité d'un partage SMB ?
 
