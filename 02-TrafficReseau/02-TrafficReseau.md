@@ -206,3 +206,7 @@
 ### Voir Point16 
 
 ## B2. Reconstituer un fichier qui à transité sur le réseau à l'aide de Wireshark
+
+<p align="center">
+    <img src="./RecHTTP.png" alt="RecHTTP" style="width: 800px;" />
+</p>
