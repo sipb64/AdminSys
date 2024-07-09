@@ -6,21 +6,36 @@ apt install build-essential autotools-dev libpcre3 libpcre3-dev libpcap-dev libd
 
 # Paquet Libdaq
 git clone https://github.com/snort3/libdaq.git
+
 cd libdaq
+
 ./bootstrap
+
 ./configure 
+
 make install
+
 ldconfig
+
 cd
 
 # Installer snort
 git clone https://github.com/snort3/snort3.git
+
 cd snort3
+
 ./configure_cmake.sh  
+
 cd build
+
 make -j $(nproc)
+
 make install
 
 alias snort='/root/snort3/build/src/snort'
 
 snort -V
+
+<p align="center">
+    <img src="./snort-install.png" alt="snort" style="width: 800px;" />
+</p>
