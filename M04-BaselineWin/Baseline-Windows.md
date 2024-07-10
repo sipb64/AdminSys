@@ -56,7 +56,11 @@ https://learn.microsoft.com/fr-fr/windows/security/operating-system-security/dev
 
 # Renforcer config Antivirus powershell
 
+https://learn.microsoft.com/fr-fr/powershell/module/defender/?view=windowsserver2022-ps
 
+<p align="center">
+    <img src="./WinDefPow.png" alt="WinDef" style="width: 800px;" />
+</p>
 
 
 
