@@ -1,10 +1,11 @@
 # Utilisation Auditpol
 
+ La configuration initiale d'Auditpol n'est pas persistante par défaut, elle peut être rendue persistante en configurant les paramètres d'audit dans une stratégie de groupe
+
 AuditPol [/commande] [/souscommande]
 ## Verification des politiques
 
 AuditPol /get /category:*
-
 
 ## Configuration pour erreur d'authentification
 
@@ -23,7 +24,6 @@ Auditpol /set /category:"Utilisation de privilège" /success:enable /failure:ena
 <p align="center">
     <img src="./auditpol-privilege.png" alt="privilege" style="width: 800px;" />
 </p>
-
 
 # MSCT et LGPO doc 
 
