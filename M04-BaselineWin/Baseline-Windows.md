@@ -51,12 +51,12 @@ https://learn.microsoft.com/fr-fr/windows/security/operating-system-security/dev
 # Activation Bitlocker
 
 <p align="center">
-    <img src="./Bitlock.png" alt="Bitlock" style="width: 800px;" />
+    <img src="./Bitlockv2.png" alt="Bitlock" style="width: 800px;" />
 </p>
 
 # Renforcer config Antivirus powershell
 
-coucou
+
 
 
 
