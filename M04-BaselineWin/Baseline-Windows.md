@@ -24,11 +24,6 @@ Auditpol /set /category:"Utilisation de privilège" /success:enable /failure:ena
     <img src="./auditpol-privilege.png" alt="privilege" style="width: 800px;" />
 </p>
 
-## Capture d'événements
-
-<p align="center">
-    <img src="./auditpol-even.png" alt="even" style="width: 800px;" />
-</p>
 
 # MSCT et LGPO doc 
 
@@ -62,6 +57,11 @@ https://learn.microsoft.com/fr-fr/powershell/module/defender/?view=windowsserver
     <img src="./WinDefPow.png" alt="WinDef" style="width: 800px;" />
 </p>
 
+## Capture d'événements
+
+<p align="center">
+    <img src="./auditpol-even.png" alt="even" style="width: 800px;" />
+</p>
 
 
 
