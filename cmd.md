@@ -10,6 +10,11 @@ alt + z -> word wrap
 
 maj + flèche -> duplication
 
+## Ajouter une image dans un markdown 
+
+<p align="center">
+    <img src="./image.png" alt="image" style="width: 800px;" />
+</p>
 
 ## Apercu html d’un markdown 
 
