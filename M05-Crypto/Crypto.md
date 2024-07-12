@@ -30,7 +30,7 @@ openssl enc -aes-256-cbc -in TestCrypto.txt -out Chiffrement.bin -K XXXXXXXXXXXX
 
 ## Décrypter le message 
 
-openssl enc -d -aes-256-cbc -in TestCrypto.bin -out Dechiffrement.txt -K XXXXXXXXXXXXXXKEYXXXXXXXX -iv XXXXXXXXXIVXXXXXXX
+openssl enc -d -aes-256-cbc -in Chiffrement.bin -out Dechiffrement.txt -K XXXXXXXXXXXXXXKEYXXXXXXXX -iv XXXXXXXXXIVXXXXXXX
 
 <p align="center">
     <img src="./TestCryptoOpenSSL.png" alt="TestCryptoOpenSSL" style="width: 800px;" />
