@@ -6,6 +6,7 @@
 #
 ##################################################
 
+# Inviter l'utilisateur à rentrer la cle et l'IV et les stocker en tant que variable
 #read -p "Tapez la clé AES : " CleAES
 #read -p "Tapez IV : " IV
 

@@ -18,7 +18,7 @@ cat MonMessage.txt
 # Creation de la cle AES256 et de l'IV avec openssl qui seront stockees dans un fichier
 openssl enc -aes-256-cbc -k secret_password -P -md sha256 > Cles.txt
 
-# Inviter l'utilisateur à rentrer la cle et l'IV
+# Inviter l'utilisateur à rentrer la cle et l'IV et les stocker en tant que variable
 #read -p "Tapez la clé AES : " CleAES
 #read -p "Tapez IV : " IV
 
