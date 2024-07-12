@@ -37,7 +37,3 @@ cat Chiffrement.bin
 
 # Affiche le message dechiffre
 #cat Dechiffrement.txt
-
-
-
-
