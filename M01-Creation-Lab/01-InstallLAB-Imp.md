@@ -1,4 +1,4 @@
-# Rendu Capture Ecran Install LAB
+# Captures Install LAB
 
 ## Verification Hash Iso Debian
 
