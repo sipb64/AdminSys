@@ -36,6 +36,12 @@ openssl enc -d -aes-256-cbc -in Chiffrement.bin -out Dechiffrement.txt -K XXXXXX
     <img src="./TestCryptoOpenSSL.png" alt="TestCryptoOpenSSL" style="width: 800px;" />
 </p>
 
+### Exemple de script pour chiffrer
+https://github.com/sipb64/Secu/blob/main/M05-Crypto/ChiffrerMess.sh
+
+### Exemple de script pour déchiffrer
+https://github.com/sipb64/Secu/blob/main/M05-Crypto/DechiffrerMess.sh
+
 # Générer une clé de chiffrement sûre et risque IV identiques
 
 - Utiliser un générateur de nombres aléatoires cryptographiquement sécurisé
