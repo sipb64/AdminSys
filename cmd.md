@@ -1,5 +1,7 @@
 ## Commande utile Vscode
 
+ctrl + / -> commenter en masse
+
 ctrl + ù -> ouvrir/fermer term
 
 ctrl + b -> explorateur
