@@ -16,7 +16,12 @@ L'objectif de cet audit est d'évaluer la sécurité de l'infrastructure et des 
 
 ## 4. Méthodologie
 
-Cet audit sera réalisé en suivant la méthodologie PASSI (Prestataire d'Audit de la Sécurité des Systèmes d'Information). Cette approche structurée nous permettra d'effectuer une évaluation complète et rigoureuse des composants du SI d'ABC. Les étapes principales de la méthodologie PASSI incluent l'analyse des risques, les tests techniques, les entretiens avec le personnel et l'observation sur le terrain.
+Cet audit sera réalisé en suivant la méthodologie [PASSI (Prestataire d'Audit de la Sécurité des Systèmes d'Information)](https://cyber.gouv.fr/entreprises/qualifications/passiprestataire-daudit-de-la-securite-des-systemes-dinformation).
+
+Les recommandations seront également basées sur le [guide de sécurité relatif à un système GNU/Linux](https://cyber.gouv.fr/publications/recommandations-de-securite-relatives-un-systeme-gnulinux) publié par l'ANSSI.
+
+Cette approche structurée nous permettra d'effectuer une évaluation complète et rigoureuse des composants du SI d'ABC.
+Les étapes principales de la méthodologie PASSI incluent l'analyse des risques, les tests techniques, les entretiens avec le personnel et l'observation sur le terrain.
 
 ## 5. Résumé Exécutif
 
@@ -43,21 +48,23 @@ Le serveur à était installé avec les configurations par défaut.
 
 ### 6.1 Vulnérabilités Identifiées
 
-| ID  | Type de vulnérabilité                                    | Niveau de risque | Impact potentiel                                                       | Priorité |
-|-----|----------------------------------------------------------|------------------|------------------------------------------------------------------------|----------|
-| 01  | Absence de Fail2Ban                                     | Élevé            | Compromission par force brute                                          | Haute    |
-| 02  | Absence de partitionnement /var                         | Moyen            | Saturation des journaux systèmes et des logs                           | Moyenne  |
-| 03  | Aucun mot de passe GRUB                                 | Élevé            | Modification des paramètres de démarrage par une personne non autorisée | Haute    |
-| 04  | Permissions pour le répertoire /etc/sudoers.d            | Élevé            | Risque d'escalade de privilèges non autorisée                          | Haute    |
-| 05  | Permissions pour le fichier de configuration CUPS        | Moyen            | Risque de sécurité lié aux permissions des fichiers                    | Moyenne  |
-| 06  | wpa_supplicant.service                                  | Risqué           | Vulnérabilités potentielles dans la gestion des connexions Wi-Fi       | Haute    |
-| 07  | user@1000.service                                       | Risqué           | Risque potentiel lié à des services utilisateurs mal configurés         | Haute    |
-| 08  | systemd-rfkill.service                                  | Risqué           | Risque lié à la gestion des périphériques RF (Wi-Fi/Bluetooth)         | Haute    |
-| 09  | USBGuard non installé                                   | Élevé            | Exposition du système à des attaques physiques ou à des fuites de données par USB | Haute    |
-| 10  | Paramètres de timeout de session                        | Moyen            | Risque d'accès non autorisé en cas de session inactive                 | Moyenne  |
-| 11  | Pas de scanner de malware                               | Élevé            | Système vulnérable aux menaces                                         | Haute    |
-| 12  | Durée maximale de validité du mot de passe désactivée   | Très élevé       | Compromission de la robustesse des mots de passe sur le long terme     | Très haute |
-
+| ID  | Type de vulnérabilité                                    | Niveau de risque | Impact potentiel                                                       | Priorité | Actions possibles d'un attaquant                                      | Référence ANSSI |
+|-----|----------------------------------------------------------|------------------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------|-----------------|
+| 01  | Absence de Fail2Ban                                      | Élevé            | Compromission par force brute                                          | Haute    | Lancer des attaques par force brute pour accéder au système           | R19           |
+| 02  | Absence de partitionnement /var                          | Moyen            | Saturation des journaux systèmes et des logs                           | Moyenne  | Saturer le système en générant des logs excessifs                     | R28             |
+| 03  | Aucun mot de passe GRUB                                  | Élevé            | Modification des paramètres de démarrage par une personne non autorisée | Haute    | Modifier les paramètres de démarrage pour obtenir un accès non autorisé| R5             |
+| 04  | Permissions pour le répertoire /etc/sudoers.d            | Élevé            | Risque d'escalade de privilèges non autorisée                          | Haute    | Modifier les fichiers pour obtenir des privilèges administratifs      | R39             |
+| 05  | Permissions pour le fichier de configuration CUPS        | Moyen            | Risque de sécurité lié aux permissions des fichiers                    | Moyenne  | Accéder ou modifier les configurations d'impression                    | R63             |
+| 06  | wpa_supplicant.service                                   | Risqué           | Vulnérabilités potentielles dans la gestion des connexions Wi-Fi       | Haute    | Exploiter les vulnérabilités pour intercepter ou manipuler les connexions Wi-Fi |              |
+| 07  | user@1000.service                                        | Risqué           | Risque potentiel lié à des services utilisateurs mal configurés         | Haute    | Exploiter les services mal configurés pour obtenir un accès non autorisé | R67             |
+| 08  | systemd-rfkill.service                                   | Risqué           | Risque lié à la gestion des périphériques RF (Wi-Fi/Bluetooth)         | Haute    | Manipuler les périphériques RF pour intercepter ou perturber les communications |              |
+| 09  | USBGuard non installé                                    | Élevé            | Exposition du système à des attaques physiques ou à des fuites de données par USB | Haute    | Utiliser des périphériques USB pour injecter des malwares ou voler des données |              |
+| 10  | Paramètres de timeout de session                         | Moyen            | Risque d'accès non autorisé en cas de session inactive                 | Moyenne  | Accéder au système si une session reste ouverte et inactive           | R32             |
+| 11  | Pas de scanner de malware                                | Élevé            | Système vulnérable aux menaces                                         | Haute    | Introduire des malwares sans être détecté                             |              |
+| 12  | Durée maximale de validité du mot de passe désactivée    | Très élevé       | Compromission de la robustesse des mots de passe sur le long terme     | Très haute | Exploiter des mots de passe faibles ou anciens pour accéder au système | R31             |
+| 13  | Ports ouverts non sécurisés                              | Haut             | Compromission du serveur via un service non sécurisé                   | Haute    | Lancer des attaques via des ports ouverts non sécurisés (ex : 80, 23) | R12             |
+| 14  | NetworkManager.service                           | Élevé            | Compromission de la gestion des connexions réseau                      | Haute    | Exploiter la vulnérabilité pour perturber ou intercepter les connexions réseau | R78             |
+| 15  | ssh.service                                              | Élevé            | Accès non autorisé au système                                          | Haute    | Exploiter la vulnérabilité pour obtenir un accès non autorisé au système | R33             |
  
 ## 7. Recommandations
 
@@ -65,12 +72,10 @@ Le serveur à était installé avec les configurations par défaut.
 
 Quelques ajustements sont nécessaires pour optimiser la sécurité du serveur.
 
-### 7.2 Recommandations Spécifiques
-
 | Vulnérabilité | Action recommandée | Priorité |
 |---------------|--------------------|----------|
-| 01| Installez Fail2Ban pour bannir automatiquement les hôtes ayant plusieurs erreurs d'authentification. | Haute |
-| 02 | Partitionner le disque en séparant /home /tmp  /var | Moyenne |
+| 01 | Installez Fail2Ban pour bannir automatiquement les hôtes ayant plusieurs erreurs d'authentification. | Haute |
+| 02 | Partitionner le disque en séparant /home /tmp /var | Moyenne |
 | 03 | Affecter un mot de passe robuste au GRUB | Haute |
 | 04 | Vérifiez et ajustez les permissions du répertoire /etc/sudoers.d pour éviter les escalades de privilèges non autorisées. | Haute |
 | 05 | Vérifiez et ajustez les permissions des fichiers de configuration de CUPS pour améliorer la sécurité. | Moyenne |
@@ -78,9 +83,12 @@ Quelques ajustements sont nécessaires pour optimiser la sécurité du serveur.
 | 07 | Vérifiez la configuration du service user@1000 pour garantir qu'il ne présente pas de risques de sécurité. | Haute |
 | 08 | Examinez la configuration du service systemd-rfkill pour réduire les risques liés à la gestion des périphériques RF. | Haute |
 | 09 | Installer et configurer USBGuard | Haute |  
-| 10 | Configurer le timeout des sessions utilisateur local et SSH| Moyenne |
-| 11 | Installer ClamAV et planifier des scans automatiques| Haute |
+| 10 | Configurer le timeout des sessions utilisateur local et SSH | Moyenne |
+| 11 | Installer ClamAV et planifier des scans automatiques | Haute |
 | 12 | Configurer la durée maximale de validité des mots de passe de minimum 90 jours | Très haute |
+| 13 | Fermer les ports non utilisés et sécuriser les services sur les ports ouverts | Haute |
+| 14 | Mettez à jour NetworkManager et configurez-le correctement pour limiter les risques de sécurité | Haute |
+| 15 | Mettez à jour OpenSSH et configurez-le correctement pour limiter les risques de sécurité | Haute |
 
 
 
@@ -88,14 +96,15 @@ Quelques ajustements sont nécessaires pour optimiser la sécurité du serveur.
 
 ---
 
-## 8. Conclusion
+## Conclusion
 
-L'audit a révélé 12 vulnérabilités dans le système, dont 6 sont considérées comme critiques. Ces vulnérabilités exposent le système à divers risques de sécurité, allant des attaques par force brute à l'exposition aux menaces physiques. Les principales préoccupations identifiées incluent l'absence de mesures de sécurité essentielles comme Fail2Ban et USBGuard, ainsi que des configurations inappropriées pour les services et les permissions des fichiers.
-Les recommandations proposées visent à remédier aux problèmes identifiés et à renforcer la sécurité globale du système. 
-Les actions recommandées comprennent l'installation et la configuration appropriée de Fail2Ban, l'activation de USBGuard, et l'ajustement des paramètres de sécurité pour divers services et fichiers système.
-Il est crucial que ces recommandations soient mises en œuvre rapidement pour réduire les risques et protéger le système contre les menaces potentielles. 
-Un suivi régulier et une réévaluation périodique des mesures de sécurité sont également recommandés pour garantir que le système reste sécurisé contre les vulnérabilités émergentes.
-L'amélioration des mesures de sécurité est essentielle pour assurer l'intégrité, la confidentialité et la disponibilité des données et des services.
+L’audit a révélé 15 vulnérabilités dans le système, dont 7 sont considérées comme critiques. Ces vulnérabilités exposent le système à divers risques de sécurité, allant des attaques par force brute à l’exposition aux menaces physiques. Les principales préoccupations identifiées incluent l’absence de mesures de sécurité essentielles comme Fail2Ban et USBGuard, ainsi que des configurations inappropriées pour les services et les permissions des fichiers.
+
+Les recommandations proposées visent à remédier aux problèmes identifiés et à renforcer la sécurité globale du système. Les actions recommandées comprennent l’installation et la configuration appropriée de Fail2Ban, l’activation de USBGuard, et l’ajustement des paramètres de sécurité pour divers services et fichiers système.
+
+Il est crucial que ces recommandations soient mises en œuvre rapidement pour réduire les risques et protéger le système contre les menaces potentielles. Un suivi régulier et une réévaluation périodique des mesures de sécurité sont également recommandés pour garantir que le système reste sécurisé contre les vulnérabilités émergentes.
+
+L’amélioration des mesures de sécurité est essentielle pour assurer l’intégrité, la confidentialité et la disponibilité des données et des services.
 
 ---
 
@@ -132,6 +141,7 @@ L'amélioration des mesures de sécurité est essentielle pour assurer l'intégr
 - **Scanner de malware** : Logiciel destiné à détecter et éliminer les logiciels malveillants. L'absence de scanner de malware laisse le système vulnérable aux menaces.
 
 - **Durée maximale de validité du mot de passe** : Paramètre de sécurité qui définit la période pendant laquelle un mot de passe reste valide avant d'exiger un changement. Une durée maximale désactivée compromet la robustesse des mots de passe sur le long terme.
+
 
 
 ### 9.3 Logs et Résultats des Tests Techniques
@@ -705,5 +715,168 @@ Si vous avez besoin d'aide supplémentaire, n'hésitez pas à demander !
      ```bash
      sudo chage -l nom_utilisateur
      ```
+
+## Vulnerabilité ID : 13
+
+| ID  | Type de vulnérabilité                                    | Niveau de risque | Impact potentiel                                                       | Priorité | Actions possibles d'un attaquant                                      |
+|-----|----------------------------------------------------------|------------------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------|
+| 13  | Ports ouverts non sécurisés                              | Haut             | Compromission du serveur via un service non sécurisé                   | Haute    | Lancer des attaques via des ports ouverts non sécurisés (ex : 80, 23) |
+
+### Vérification de la Faille
+
+1. **Vérification des ports ouverts non sécurisés** :
+   - Utilisez un outil comme `nmap` pour détecter les ports ouverts :
+     ```bash
+     sudo nmap -sS -O localhost
+     ```
+   - Recherchez les ports ouverts non sécurisés, tels que 80 (HTTP) et 23 (Telnet).
+
+### Résolution de la Faille
+
+1. **Fermeture des Ports Non Utilisés** :
+   - Utilisez `iptables` pour fermer les ports non utilisés. Par exemple, pour fermer le port 23 (Telnet) :
+     ```bash
+     sudo iptables -A INPUT -p tcp --dport 23 -j DROP
+     ```
+
+2. **Sécurisation des Services sur les Ports Ouverts** :
+   - Assurez-vous que les services sur les ports ouverts sont sécurisés et à jour. Par exemple, pour sécuriser le port 80 (HTTP), utilisez HTTPS à la place :
+     ```bash
+     sudo apt-get install apache2
+     sudo a2enmod ssl
+     sudo systemctl restart apache2
+     ```
+
+3. **Mise à Jour et Patching** :
+   - Assurez-vous que tous les services et logiciels sont à jour avec les derniers correctifs de sécurité :
+     ```bash
+     sudo apt-get update
+     sudo apt-get upgrade
+     ```
+
+4. **Utilisation d'un Pare-feu** :
+   - Configurez un pare-feu pour surveiller et contrôler le trafic réseau. Par exemple, avec `ufw` (Uncomplicated Firewall) :
+     ```bash
+     sudo ufw enable
+     sudo ufw allow ssh
+     sudo ufw allow https
+     sudo ufw deny 23
+     sudo ufw status
+     ```
+
+5. **Vérification des Ports** :
+   - Vérifiez à nouveau les ports ouverts pour vous assurer que les modifications ont été appliquées :
+     ```bash
+     sudo nmap -sS -O localhost
+     ```
+
+
+## Vulnerabilité ID : 14 
+
+![alt text](image-15.png)
+### Vérification de la Faille
+
+1. **Vérification de la version de NetworkManager** :
+   - Utilisez la commande suivante pour vérifier la version de NetworkManager installée :
+     ```bash
+     nmcli -v
+     ```
+   - Si la version est inférieure à la dernière version stable, cela signifie que le système pourrait être vulnérable.
+
+2. **Vérification de l'état du service NetworkManager** :
+   - Utilisez la commande suivante pour vérifier si NetworkManager est en cours d'exécution :
+     ```bash
+     systemctl status NetworkManager
+     ```
+
+### Résolution de la Faille
+
+1. **Mise à Jour de NetworkManager** :
+   - Mettez à jour NetworkManager vers la dernière version disponible. Par exemple, sur une distribution basée sur Debian, utilisez la commande suivante :
+     ```bash
+     sudo apt-get update
+     sudo apt-get install network-manager
+     ```
+
+2. **Configuration de NetworkManager** :
+   - Assurez-vous que NetworkManager est correctement configuré pour limiter les risques de sécurité. Par exemple, vous pouvez restreindre l'accès aux interfaces réseau :
+     ```bash
+     sudo nano /etc/NetworkManager/NetworkManager.conf
+     ```
+   - Ajoutez ou modifiez les lignes suivantes pour restreindre l'accès :
+     ```plaintext
+     [main]
+     plugins=keyfile
+
+     [keyfile]
+     unmanaged-devices=interface-name:eth0;interface-name:wlan0
+     ```
+
+3. **Redémarrage du Service NetworkManager** :
+   - Après avoir appliqué les modifications, redémarrez le service NetworkManager pour qu'elles prennent effet :
+     ```bash
+     sudo systemctl restart NetworkManager
+     ```
+
+4. **Vérification du Statut** :
+   - Vérifiez le statut du service NetworkManager pour vous assurer qu'il fonctionne correctement :
+     ```bash
+     sudo systemctl status NetworkManager
+     ```
+---
+
+## Vulnerabilité ID : 15
+![alt text](image-16.png)
+La dernière version de OpenSSH est la version 9.8, qui a été publiée le 1er juillet 2024.
+### Vérification de la Faille
+
+1. **Vérification de la version de OpenSSH** :
+   - Utilisez la commande suivante pour vérifier la version de OpenSSH installée :
+     ```bash
+     ssh -V
+     ```
+   - Si la version est inférieure à la dernière version stable, cela signifie que le système pourrait être vulnérable.
+
+2. **Vérification de l'état du service SSH** :
+   - Utilisez la commande suivante pour vérifier si le service SSH est en cours d'exécution :
+     ```bash
+     systemctl status ssh
+     ```
+
+### Résolution de la Faille
+
+1. **Mise à Jour de OpenSSH** :
+   - Mettez à jour OpenSSH vers la dernière version disponible. Par exemple, sur une distribution basée sur Debian, utilisez la commande suivante :
+     ```bash
+     sudo apt-get update
+     sudo apt-get install openssh-server
+     ```
+
+2. **Configuration de OpenSSH** :
+   - Assurez-vous que OpenSSH est correctement configuré pour limiter les risques de sécurité. Par exemple, vous pouvez désactiver l'authentification par mot de passe et interdire la connexion root :
+     ```bash
+     sudo nano /etc/ssh/sshd_config
+     ```
+   - Modifiez ou ajoutez les lignes suivantes pour sécuriser SSH :
+     ```plaintext
+     PermitRootLogin no
+     PasswordAuthentication no
+     ```
+
+3. **Redémarrage du Service SSH** :
+   - Après avoir appliqué les modifications, redémarrez le service SSH pour qu'elles prennent effet :
+     ```bash
+     sudo systemctl restart ssh
+     ```
+
+4. **Vérification du Statut** :
+   - Vérifiez le statut du service SSH pour vous assurer qu'il fonctionne correctement :
+     ```bash
+     sudo systemctl status ssh
+     ```
+
+***Fait à Bayonne, le 11/09/2024***
+
+***Auditeurs : Michael Bousquet & Loïc Join***
 
 
