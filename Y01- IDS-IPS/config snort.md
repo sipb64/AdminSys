@@ -87,3 +87,6 @@ snort -c /root/snort3/lua/snort.lua -R /root/snort3/lua/rules/local.rules -i ens
     <img src="./screenping.png" alt="snort" style="width: 800px;" />
 </p>
 
+<p align="center">
+    <img src="./alert_fastping.png" alt="snort" style="width: 800px;" />
+</p>
