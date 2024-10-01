@@ -1,6 +1,8 @@
 # Attaque
 
 apt install nmap hydra hping3 curl
+
+# Metasploit
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
   chmod 755 msfinstall && \
   ./msfinstall
@@ -39,38 +41,52 @@ Log Ddos
 
 nano /root/snort3/lua/rules/local.rules 
 
-alert tcp any any -> any any (msg:"Scan de ports détecté"; flags:S; detection_filter:track by_src, count 20, seconds 60; sid>
+# LOCAL RULES
+# ----------------
+# This file intentionally does nots come with signatures. Put your local additions here.
 
-alert tcp any any -> any 22 (msg:"Tentative de connexion SSH suspecte"; flags:S; sid:1000002; rev:1;)
+drop icmp any any -> any any (msg:"!!! ICMP Alert !!!";sid:1000001;rev:1;classtype:icmpevent;)
 
-alert tcp any any -> any any (msg:"Tentative d'exploitation détectée"; content:"|90 90 90|"; sid:1000003; rev:1;)
+#alert tcp any any -> any any (msg:"Scan de ports détecté"; flags:S; detection_filter:track by_src, count 10, seconds 60; sid:1000001; rev:1;)
 
-snort -c /root/snort3/lua/snort.lua -R /root/snort3/lua/rules/local.rules -i ens18 -A alert_fast -l /var/log/snort
+#alert tcp any any -> any 22 (msg:"Tentative de connexion SSH suspecte détectée"; flow:to_server,established; content:"SSH"; detection_filter:track by_src, count 5, seconds 60; sid:1000002; rev:1;)
+
+#alert tcp any any -> any 22 (msg:"Échec de connexion SSH détecté"; flow:to_server,established; content:"Permission denied"; sid:1000004; rev:1;)
+
+#alert tcp any any -> any 22 (msg:"Tentative de connexion SSH suspecte"; flags:S; sid:1000002; rev:1;)
+
+#alert tcp any any -> any any (msg:"Tentative d'exploitation détectée"; content:"|90 90 90|"; sid:1000003; rev:1;)
+
+
+
+
 
 ######
 #
 ######
 # NMAP
-alert tcp any any -> any any (msg:"Scan Nmap SYN détecté"; flags:S; detection_filter:track by_src, count 5, seconds 10; sid:>
+alert tcp any any -> any any (msg:"Scan Nmap SYN détecté"; flags:S; detection_filter:track by_src, count 5, seconds 10; sid:2000001; rev:1;)
 
 
-alert tcp any any -> any any (msg:"Scan Nmap FIN détecté"; flags:F; detection_filter:track by_src, count 5, seconds 10; sid:>alert udp any any -> any any (msg:"Scan Nmap UDP détecté"; detection_filter:track by_src, count 5, seconds 10; sid:2000003; >
+alert tcp any any -> any any (msg:"Scan Nmap FIN détecté"; flags:F; detection_filter:track by_src, count 5, seconds 10; sid:2000002; rev:1;)
+alert udp any any -> any any (msg:"Scan Nmap UDP détecté"; detection_filter:track by_src, count 5, seconds 10; sid:2000003; rev:1;)
 
 # SSH
 
-alert tcp any any -> any 22 (msg:"Hydra SSH force brute détecté"; flow:to_server,established; content:"SSH"; detection_filte>alert tcp any any -> any 22 (msg:"Hydra SSH force brute détecté - Échec d'authentification"; flow:to_server,established; con>
+alert tcp any any -> any 22 (msg:"Hydra SSH force brute détecté"; flow:to_server,established; content:"SSH"; detection_filter:track by_src, count 3, seconds 30; sid:2000004; rev:1;)
+alert tcp any any -> any 22 (msg:"Hydra SSH force brute détecté - Échec d'authentification"; flow:to_server,established; content:"Permission denied, please try again."; detection_filter:track by_src, count 3, seconds 30; sid:2000009; rev:1;)
 
 
 # Hping
 
-alert icmp any any -> any any (msg:"DDoS ICMP avec hping3 détecté"; detection_filter:track by_src, count 100, seconds 1; sid>
+alert icmp any any -> any any (msg:"DDoS ICMP avec hping3 détecté"; detection_filter:track by_src, count 100, seconds 1; sid:2000005; rev:1;)
 
-alert tcp any any -> any any (msg:"DDoS SYN flood avec hping3 détecté"; flags:S; detection_filter:track by_src, count 100, s>
+alert tcp any any -> any any (msg:"DDoS SYN flood avec hping3 détecté"; flags:S; detection_filter:track by_src, count 100, seconds 1; sid:2000006; rev:2;)
 
 
 # Metasploit
 
-alert tcp any any -> any 445 (msg:"Tentative d'exploitation SMB avec Metasploit détectée"; flow:to_server,established; conte>
+alert tcp any any -> any 445 (msg:"Tentative d'exploitation SMB avec Metasploit détectée"; flow:to_server,established; content:"|FF|SMB"; sid:2000007; rev:1;)
 
 
-alert tcp any any -> any any (msg:"Payload Meterpreter détecté"; flow:to_server,established; content:"|90 90 90 90|"; sid:20>
+alert tcp any any -> any any (msg:"Payload Meterpreter détecté"; flow:to_server,established; content:"|90 90 90 90|"; sid:2000008; rev:1;)
