@@ -34,7 +34,7 @@ Log Nmap
 Log Ddos
 
 <p align="center">
-    <img src="./DDOS.png" alt="snort" style="width: 800px;" />
+    <img src="./DdosLayilla.png" alt="snort" style="width: 800px;" />
 </p>
 
 nano /root/snort3/lua/rules/local.rules 
