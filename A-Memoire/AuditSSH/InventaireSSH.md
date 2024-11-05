@@ -27,7 +27,7 @@ SERVERS="192.168.1.20 192.168.1.214"
 {
 for server in \$SERVERS; do
   echo "=== \$server ==="
-  ssh \$USER@\$server "cat /etc/os-release; ssh -V 2>&1"
+  ssh \$USER@\$server "cat /etc/os-release; ssh -V 2>&1; dpkg --list | grep openssh"
   echo
 done
 } > inventaireSRV.txt
