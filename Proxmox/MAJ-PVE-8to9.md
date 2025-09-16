@@ -45,9 +45,3 @@ apt update
 # Passer à la monter de version Debian
 
 apt dist-upgrade
-
-# Si besoin en cas de problème Créer le dossier et le script hook
-
-#mkdir /usr/share/proxmox-ve
-#nano /usr/share/proxmox-ve/pve-apt-hook
-#chmod u+x /usr/share/proxmox-ve/pve-apt-hook
