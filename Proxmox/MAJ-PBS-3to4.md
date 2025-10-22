@@ -4,7 +4,7 @@
 #
 ##################################################
 
-# Faire un backup de /etc/proxmox-backup pour que la configuration peut etre récupérée
+# Faire un backup de /etc/proxmox-backup pour pouvoir récupérer la configuration
 tar czf "pbs3-etc-backup-$(date -I).tar.gz" -C "/etc" "proxmox-backup"
 
 # S'assure d'avoir 10go de disque libre dans le point de montage racine
