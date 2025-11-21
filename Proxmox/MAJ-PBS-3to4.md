@@ -43,10 +43,6 @@ Components: pbs-no-subscription
 Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
 EOF
 
-# Si besoin ajouter
-
-#echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
-
 # Raffraichier l'index 
 
 apt update
