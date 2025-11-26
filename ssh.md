@@ -1,7 +1,7 @@
 # Connexion SSH par clés sans mot de passe
 
 ## Génération des clés communs window linux
-ssh-keygen -t rsa -b 4096
+ssh-keygen -t ed25519
 
 ## Linux SSH copy id 
 ssh-copy-id user@ip.du.srv.distant
