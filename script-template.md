@@ -1,21 +1,24 @@
+# Template script de base 
+
+```shell
 #!/bin/bash
 
 ###############################################
-#
-# Description : 
+
+# Description :
 # Date :
 # Version :
 # Auteur :
-#
+
 ###############################################
 
-echo " 
+echo "
 
 Option :
-        - --create :
-        - --drop :
-        - --infos :
-        - --start :
+- --create :
+- --drop :
+- --infos :
+- --start :
 
 "
 
@@ -24,13 +27,14 @@ Option :
 var="mavariable"
 echo $mavariable
 
-## Variantes 
+Variantes
 
-if [<condition>];
+if [];
 
-        then
+    then
 
-        elif [<condition>];
-        then
+    elif [<condition>];
+    then
 
-        else
+    else
+```
