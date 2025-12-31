@@ -1,6 +1,6 @@
 # Template script de base 
 
-```shell
+```
 #!/bin/bash
 
 ###############################################
