@@ -20,3 +20,4 @@
 
 ### IA
 - [Ollama Linux/Windows](IA/Ollama.md)
+- [OpenWebUI dans VM-GPU](IA\OpenWebUI-serverGPU.md)
