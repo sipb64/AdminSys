@@ -51,7 +51,7 @@ sudo apt install -y nvidia-container-toolkit
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 ````
-### Compose ollama + openwebui
+## Compose ollama + openwebui
 ````
 services:
   ollama:
@@ -87,3 +87,19 @@ volumes:
   ollama:
   open-webui:
 ````
+
+## Sauvegarde et restauration des données openwebui
+### Sauvegarder les données openwebui
+```
+docker run --rm -v open-webui:/data -v "$PWD:/backup" alpine   tar czf /backup/openwebui-backup-$(date +%Y%m%d_%H%M%S).tar.gz /data
+```
+### Repartir d'un volume vide
+```
+docker volume rm open-webui
+docker volume create open-webui
+```
+### Restaurer l’archive dans le volume 
+```
+docker run --rm -v open-webui:/data -v "$PWD:/backup" alpine \
+  sh -c 'tar xzf /backup/openwebui-backup-YYYYmmdd_HHMMSS.tar.gz -C /'
+```
