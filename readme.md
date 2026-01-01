@@ -17,3 +17,6 @@
 
 ### Template
 - [Template Script Bash](Template/script-template.md)
+
+### IA
+- [Ollama Linux/Windows](IA/Ollama.md)
