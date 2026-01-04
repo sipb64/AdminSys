@@ -2,7 +2,7 @@
 
 ## Sommaire
 
-### [SSH](AdminSys/SSH/)
+### SSH
 - [Gestion clés SSH](SSH/sshkey.md)
 
 ### Proxmox
