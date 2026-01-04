@@ -1,12 +1,12 @@
 # OLLAMA Linux/Windows
-## Installation
+## **Installation**
 ### Windows
-Télécharger et installer l'executable https://ollama.com/download/OllamaSetup.exe
+#### Télécharger et installer l'executable https://ollama.com/download/OllamaSetup.exe
 ### Linux
 ```
 curl -fsSL https://ollama.com/install.sh | sh
 ```
-## Commande de base
+## **Commande de base**
 ### Télécharger un modèle
 ```
 ollama pull NomDuModele:Poids
@@ -23,7 +23,7 @@ ollama ls
 ```
 ollama rm NomDuModele:Poids
 ```
-## Mise à jour des modèles
+## **Mise à jour des modèles**
 ### Commande powershell pour mettre à jour tous les modeles sur windows
 ```
 ollama list | Select-Object -Skip 1 | ForEach-Object {
