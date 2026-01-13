@@ -87,7 +87,10 @@ volumes:
   ollama:
   open-webui:
 ````
-
+### Lancer le compose et se connecter à l'interface sur le port 3000
+```
+docker compose -f compose-ia.yml up -d
+```
 ## Sauvegarde et restauration des données openwebui
 ### Sauvegarder les données openwebui
 ```
@@ -102,4 +105,22 @@ docker volume create open-webui
 ```
 docker run --rm -v open-webui:/data -v "$PWD:/backup" alpine \
   sh -c 'tar xzf /backup/openwebui-backup-YYYYmmdd_HHMMSS.tar.gz -C /'
+```
+
+## Mise à jour des versions ollama et openwebui
+### Arreter les containers du compose
+```
+docker compose -f compose-ia.yml down
+```
+### Télécharger les nouvelles images docker
+```
+docker compose -f compose-ia.yml pull
+```
+### Relancer le compose
+```
+docker compose -f compose-ia.yml up -d
+```
+### Nettoyer les images obsolètes
+```
+docker image prune -a
 ```
