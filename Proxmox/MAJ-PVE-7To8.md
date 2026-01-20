@@ -1,4 +1,4 @@
-# Proxmox Virual Environment Mise à niveau 7 to 8
+# Proxmox Virual Environment Mise à niveau 7 vers 8
 
 ## Mise a jour des paquets de base et redémarrer si nécessaire
 ```
