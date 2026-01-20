@@ -1,9 +1,9 @@
-# Infrastructure & Automation Knowledge Base
-> **Michaël Bousquet** - SysAdmin & DevOps | Open Source Enthusiast
+# Base de connaissance Infrastructure & Automation
+> **Michaël Bousquet** - SysAdmin & DevOps | Passionné Libre et Open Source
 
-Bienvenue sur mon portfolio technique. Ce dépôt centralise mes procédures d'infrastructure, mes scripts d'automatisation et mes notes de déploiement issues de situations réelles en production et en laboratoire.
+Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes procédures d'infrastructure, mes scripts d'automatisation et mes notes de déploiement issues de situations réelles en production et en laboratoire.
 
-## 🛠️ Stack Technique
+## 🛠️ Environnement Technique
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Proxmox](https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
@@ -15,7 +15,7 @@ Bienvenue sur mon portfolio technique. Ce dépôt centralise mes procédures d'i
 Gestion de cycle de vie de clusters Proxmox et plans de reprise d'activité.
 
 - **Proxmox Virtual Environment (PVE)** : Stratégies de migration sans interruption de service.
-  - [Migration majeure : PVE 8 vers 9 (Early Adopter)](Proxmox/MAJ-PVE-8To9.md)
+  - [Migration majeure : PVE 8 vers 9 (Early Adopter)](Proxmox/MAJ-PVE-8to9.md)
   - [Maintenance : PVE 7 vers 8](Proxmox/MAJ-PVE-7To8.md)
 - **Proxmox Backup Server (PBS)** : Sécurisation des sauvegardes.
   - [Upgrade d'infrastructure de sauvegarde (PBS 3 vers 4)](Proxmox/MAJ-PBS-3to4.md)
