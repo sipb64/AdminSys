@@ -28,7 +28,7 @@ Hardening système et gestion des flux.
   - [Gestion de certificats SSL auto-signés/publics](Réseaux/GenSSL.md)
 - **Pare-feu & Filtrage** :
   - [Règles iptables de base pour serveurs Linux](Réseaux/Iptable.md)
-  - [Optimisation réseau : Désactivation IPv6 (Hardening)](Réseaux/DisableIPv6_linux.md)
+  - [Optimisation réseau : Gestion IPv6](Réseaux/DisableIPv6_linux.md)
 
 ## 🤖 IA On-Premise & Hardware Passthrough
 Déploiement de solutions LLM locales avec accélération matérielle.
