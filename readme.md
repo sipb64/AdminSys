@@ -1,5 +1,5 @@
 # Base de connaissance Infrastructure & Automatisation
-> **Michaël B.** - SysAdmin & DevOps | Passionné Libre et Open Source
+> **Michaël B.** - Ingénieur Infrastructure & SRE | Passionné Libre et Open Source
 
 Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes procédures d'infrastructure, mes scripts d'automatisation et mes notes de déploiement issues de situations réelles en production et en laboratoire.
 
