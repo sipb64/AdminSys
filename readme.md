@@ -1,5 +1,5 @@
-# Base de connaissance Infrastructure & Automation
-> **Michaël Bousquet** - SysAdmin & DevOps | Passionné Libre et Open Source
+# Base de connaissance Infrastructure & Automatisation
+> **Michaël B.** - SysAdmin & DevOps | Passionné Libre et Open Source
 
 Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes procédures d'infrastructure, mes scripts d'automatisation et mes notes de déploiement issues de situations réelles en production et en laboratoire.
 
@@ -11,12 +11,12 @@ Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes proc�
 
 ---
 
-## 🏗️ Virtualisation & Lifecycle Management (MCO)
+## 🏗️ Virtualisation & Gestion du cycle de vie (MCO)
 Gestion de cycle de vie de clusters Proxmox et plans de reprise d'activité.
 
 - **Proxmox Virtual Environment (PVE)** : Stratégies de migration sans interruption de service.
   - [Migration majeure : PVE 8 vers 9 (Early Adopter)](Proxmox/MAJ-PVE-8to9.md)
-  - [Maintenance : PVE 7 vers 8](Proxmox/MAJ-PVE-7To8.md)
+  - [Maintenance : PVE 7 vers 8](Proxmox/MAJ-PVE-7to8.md)
 - **Proxmox Backup Server (PBS)** : Sécurisation des sauvegardes.
   - [Upgrade d'infrastructure de sauvegarde (PBS 3 vers 4)](Proxmox/MAJ-PBS-3to4.md)
 
@@ -42,7 +42,7 @@ Standardisation des déploiements.
 - [Template de script Bash (Boilerplate avec gestion d'erreurs)](Template/script-template.md)
 
 ---
-*Ce dépôt est maintenu activement. Pour discuter de ces implémentations ou d'opportunités professionnelles, retrouvez-moi sur [LinkedIn](TON_LIEN_LINKEDIN_ICI).*
+*Ce dépôt est maintenu activement. Pour discuter de ces implémentations ou d'opportunités professionnelles, retrouvez-moi sur [LinkedIn](https://www.linkedin.com/in/ethiksys).*
 
 
 
