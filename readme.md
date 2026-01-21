@@ -24,7 +24,7 @@ Gestion de clusters Proxmox et plans de reprise d'activité.
 Hardening système et gestion des flux.
 
 - **Cryptographie & Accès** :
-  - [Gestion des clés SSH](SSH/sshkey.md)
+  - [Gestion des clés SSH](SSH/Gestionclessh.md)
   - [Gestion de certificats SSL auto-signés/publics](Réseaux/GestionSSL.md)
 - **Pare-feu & Filtrage** :
   - [Règles iptables de base pour serveurs Linux](Réseaux/Iptables.md)
