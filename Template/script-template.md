@@ -6,7 +6,7 @@
 # ==============================================================================
 # TITRE          : template.sh
 # DESCRIPTION    : Squelette de script Bash robuste avec logs, options et checks.
-# AUTEUR         : Michaël Bousquet
+# AUTEUR         : ethiksys
 # DATE           : 2026-01-21
 # VERSION        : 1.0.0
 # USAGE          : ./template.sh [options]
