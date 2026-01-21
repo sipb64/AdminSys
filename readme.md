@@ -31,6 +31,8 @@ Hardening système et gestion des flux.
   - [Gestion Nginx Reverse Proxy](Réseaux/ReverseProxyNginx.md)
   - [Règles iptables de base pour serveurs Linux](Réseaux/Iptables.md)
   - [Optimisation réseau : Gestion IPv6](Réseaux/DisableIPv6_linux.md)
+- **Cybersécurité**: 
+  - [Wazuh SIEM/XDR ](Sécurité/Wazuh.md)
 
 ## 📦 Services Auto-hébergés
 Déploiement de solutions autohébergés.

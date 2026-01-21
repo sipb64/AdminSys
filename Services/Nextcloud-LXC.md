@@ -1,5 +1,5 @@
 # INSTALLATION NEXTCLOUD 32 sur LXC ubuntu (Proxmox) - Installation Optimisée
-****```
+```
 Déploiement haute performance dans un conteneur système léger (LXC) sous Ubuntu, sans couche de virtualisation supplémentaire.
 
 Recommandations doc officielle
