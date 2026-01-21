@@ -36,7 +36,7 @@ Hardening système et gestion des flux.
 Déploiement de solutions autohébergés.
 
 - **Nextcloud** :
-  - [Installation Nextcloud - LXC](Services/Nextcloud.md)
+  - [Installation Nextcloud - LXC](Services/Nextcloud-LXC.md)
 - **IA locale & Hardware Passthrough**
   - [Virtualisation GPU pour OpenWebUI (PCI Passthrough)](IA/OpenWebUI-serverGPU.md)
   - [Installation d'Ollama (Linux/Windows)](IA/Ollama.md)
