@@ -8,12 +8,12 @@ Système : Ubuntu 24.04 LTS
 ```
 ## Installation Neuve
 ### Préparation
-```sh
+```bash
 apt update && apt full-upgrade -y
 apt install -y curl sudo gnupg
 ```
 ### Script d'installation officiel
-```sh
+```bash
 curl -LO "https://download.passbolt.com/ce/installer/passbolt-repo-setup.ce.sh"
 
 curl -LO "https://github.com/passbolt/passbolt-dep-scripts/releases/latest/download/passbolt-ce-SHA512SUM.txt"
