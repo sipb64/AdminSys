@@ -91,9 +91,8 @@ volumes:
 docker compose -f compose-ia.yml up -d
 ```
 ## Sauvegarde et restauration des données openwebui
-### Sauvegarder les données openwebui
+### Sauvegarder les données openwebui (Créer une archive tar.gz dans le dossier courant)
 ```bash
-# Créer une archive tar.gz dans le dossier courant
 docker run --rm -v open-webui:/data -v "$PWD:/backup" alpine \
   tar czf /backup/openwebui-backup-$(date +%Y%m%d_%H%M%S).tar.gz -C /data .
 ```
