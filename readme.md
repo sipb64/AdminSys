@@ -33,16 +33,20 @@ Hardening système et gestion des flux.
   - [Optimisation réseau : Gestion IPv6](Réseaux/DisableIPv6_linux.md)
 - **Cybersécurité**: 
   - [Wazuh SIEM/XDR ](Sécurité/Wazuh.md)
+- **Supervision**:
+  - [Zabbix](Sécurité/Wazuh.md)
 
 ## 📦 Services Auto-hébergés
 Déploiement de solutions autohébergés.
 
 - **Nextcloud** :
-  - [Installation Nextcloud - LXC](Services/Nextcloud-LXC.md)
+  - [Nextcloud - LXC](Services/Nextcloud-LXC.md)
 - **IA locale & Hardware Passthrough**
   - [Virtualisation GPU pour OpenWebUI (PCI Passthrough)](IA/OpenWebUI-serverGPU.md)
   - [Installation d'Ollama (Linux/Windows)](IA/Ollama.md)
-
+- **Serveur de mots de passe**
+  - [Passbolt](Services/Passbolt.md)
+  
 ## ⚡ Automatisation
 Standardisation des déploiements.
 - **Template** :
