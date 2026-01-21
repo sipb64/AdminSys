@@ -30,7 +30,7 @@ Hardening système et gestion des flux.
   - [Règles iptables de base pour serveurs Linux](Réseaux/Iptables.md)
   - [Optimisation réseau : Gestion IPv6](Réseaux/DisableIPv6_linux.md)
 
-## 🔐 Services Auto-hébergés
+## 📦 Services Auto-hébergés
 Déploiement de solutions autohébergés.
 
 - **Nextcloud** :
