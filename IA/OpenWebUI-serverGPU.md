@@ -1,9 +1,9 @@
-# Ubuntu 24.04 - Ollama - OpenWebUI
+# Ubuntu 24.04 - Ollama & OpenWebUI (Docker + Nvidia)
 
 ## Installation docker et docker compose sur ubuntu 24.04
 
 ### Supprimer les paquets conflictuels
-```
+```bash
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 ### Ajouter les clés GPG officielles Docker
@@ -15,7 +15,7 @@ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyring
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 ```
 ### Ajouter le dépot officiel dans les sources APT
-```
+```bash
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
@@ -23,15 +23,15 @@ echo \
 sudo apt-get update
 ```
 ### Installer les paquets Docker 
-```
+```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 ### Ajouter l'utilisateur courant dans le groupe docker
-```
+```bash
 sudo usermod -aG docker $USER
 ```
 ### Installation de dépendance nvidia
-````
+```bash
 sudo ubuntu-drivers install
 sudo apt update
 sudo apt install -y wget
@@ -44,15 +44,14 @@ echo "deb [signed-by=/etc/apt/keyrings/nvidia-container-toolkit.asc] https://nvi
 
 sudo apt update
 sudo apt install -y nvidia-container-toolkit
-
-````
+```
 ### Configuration docker pour le runtime Nvidia
-````
+```bash
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
-````
+```
 ## Compose ollama + openwebui
-````
+```yaml
 services:
   ollama:
     image: ollama/ollama:latest
@@ -86,41 +85,45 @@ services:
 volumes:
   ollama:
   open-webui:
-````
-### Lancer le compose et se connecter à l'interface sur le port 3000
 ```
+### Lancer le compose et se connecter à l'interface sur le port 3000 (http://IP_SERVEUR:3000)
+```bash
 docker compose -f compose-ia.yml up -d
 ```
 ## Sauvegarde et restauration des données openwebui
 ### Sauvegarder les données openwebui
-```
-docker run --rm -v open-webui:/data -v "$PWD:/backup" alpine   tar czf /backup/openwebui-backup-$(date +%Y%m%d_%H%M%S).tar.gz /data
-```
-### Repartir d'un volume vide
-```
-docker volume rm open-webui
-docker volume create open-webui
-```
-### Restaurer l’archive dans le volume 
-```
+```bash
+# Créer une archive tar.gz dans le dossier courant
 docker run --rm -v open-webui:/data -v "$PWD:/backup" alpine \
-  sh -c 'tar xzf /backup/openwebui-backup-YYYYmmdd_HHMMSS.tar.gz -C /'
+  tar czf /backup/openwebui-backup-$(date +%Y%m%d_%H%M%S).tar.gz -C /data .
+```
+### Restaurer l’archive 
+```bash
+# 1. Arrêter le service
+docker compose -f compose-ia.yml stop open-webui
+
+# 2. Restaurer (adapter le nom de l'archive)
+docker run --rm -v open-webui:/data -v "$PWD:/backup" alpine \
+  sh -c 'rm -rf /data/* && tar xzf /backup/VOTRE_BACKUP.tar.gz -C /data'
+
+# 3. Relancer
+docker compose -f compose-ia.yml up -d
 ```
 
 ## Mise à jour des versions ollama et openwebui
 ### Arreter les containers du compose
-```
+```bash
 docker compose -f compose-ia.yml down
 ```
 ### Télécharger les nouvelles images docker
-```
+```bash
 docker compose -f compose-ia.yml pull
 ```
 ### Relancer le compose
-```
+```bash
 docker compose -f compose-ia.yml up -d
 ```
 ### Nettoyer les images obsolètes
-```
-docker image prune -a
+```bash
+docker image prune -f
 ```
