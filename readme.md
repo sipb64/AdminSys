@@ -27,7 +27,7 @@ Hardening système et gestion des flux.
   - [Gestion des clés SSH](SSH/sshkey.md)
   - [Gestion de certificats SSL auto-signés/publics](Réseaux/GenSSL.md)
 - **Pare-feu & Filtrage** :
-  - [Règles iptables de base pour serveurs Linux](Réseaux/Iptable.md)
+  - [Règles iptables de base pour serveurs Linux](Réseaux/Iptables.md)
   - [Optimisation réseau : Gestion IPv6](Réseaux/DisableIPv6_linux.md)
 
 ## 🤖 IA On-Premise & Hardware Passthrough
