@@ -30,16 +30,19 @@ Hardening système et gestion des flux.
   - [Règles iptables de base pour serveurs Linux](Réseaux/Iptables.md)
   - [Optimisation réseau : Gestion IPv6](Réseaux/DisableIPv6_linux.md)
 
-## 🤖 IA On-Premise & Hardware Passthrough
-Déploiement de solutions LLM locales avec accélération matérielle.
+## 🔐 Services Auto-hébergés
+Déploiement de solutions autohébergés.
 
-- **Intégration GPU** : [Virtualisation GPU pour OpenWebUI (PCI Passthrough)](IA/OpenWebUI-serverGPU.md)
-- **Déploiement LLM** : [Installation d'Ollama (Linux/Windows)](IA/Ollama.md)
+- **Nextcloud** :
+  - [Installation Nextcloud - LXC](Services/Nextcloud.md)
+- **IA locale & Hardware Passthrough**
+  - [Virtualisation GPU pour OpenWebUI (PCI Passthrough)](IA/OpenWebUI-serverGPU.md)
+  - [Installation d'Ollama (Linux/Windows)](IA/Ollama.md)
 
 ## ⚡ Automatisation
 Standardisation des déploiements.
-
-- [Template de script Bash](Template/script-template.md)
+- **Template** :
+  - [Script Bash](Template/script-template.md)
 
 ---
 *Ce dépôt est maintenu activement. Pour discuter de ces implémentations ou d'opportunités professionnelles, retrouvez-moi sur [LinkedIn](https://www.linkedin.com/in/ethiksys).*
