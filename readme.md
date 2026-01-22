@@ -33,6 +33,8 @@ Hardening système et gestion des flux.
   - [Optimisation réseau : Gestion IPv6](Réseaux/DisableIPv6_linux.md)
 - **Cybersécurité**: 
   - [Wazuh SIEM/XDR](Sécurité/Wazuh.md)
+- **Supervision**: 
+  - [Zabbix LTS](Supervision/ZabbixLTS.md)
 
 ## 📦 Services Auto-hébergés
 Déploiement de solutions autohébergés.
