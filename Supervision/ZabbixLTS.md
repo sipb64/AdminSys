@@ -63,6 +63,9 @@ sudo systemctl enable zabbix-server zabbix-agent2 nginx php8.3-fpm
 wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_7.0+debian12_all.deb
 sudo dpkg -i zabbix-release_latest_7.0+debian12_all.deb
 sudo apt update
+
+# Installer l'agent et les plugins
+sudo apt install zabbix-agent2 zabbix-agent2-plugin-mongodb zabbix-agent2-plugin-mssql zabbix-agent2-plugin-postgresql
 ```
 ### Configuration Agent dans /etc/zabbix/zabbix_agent2.conf
 ```conf
