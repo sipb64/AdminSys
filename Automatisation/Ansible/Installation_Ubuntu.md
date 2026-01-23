@@ -43,10 +43,10 @@ sudo adduser ansible
 # Lui donner les droits sudo
 sudo usermod -aG sudo ansible
 ```
-### IMPORTANT : Configurer sudo sans mot de passe (NOPASSWD)
+### Recommandé : Configurer sudo sans mot de passe (NOPASSWD)
 ```bash
 # Créez un fichier dédié dans sudoers.d
-echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
+echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible | sudo chmod 440 /etc/sudoers.d/ansible
 ```
 ### Copier la clé publique vers la cible (Depuis le Contrôleur)
 ```bash

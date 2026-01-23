@@ -56,8 +56,11 @@ Standardisation des déploiements.
 - **Ansible** :
   - [Installation Ansible](Automatisation/Ansible/Installation_Ubuntu.md)
   - [Gestion de l'inventaire](Automatisation/Ansible/Gestion_inventaire.md)
+  - [Projet : Structure et exemple de playbook](Automatisation/Ansible/Gestion_des_roles.md)
+  - [Gestion des rôles](Automatisation/Ansible/Gestion_des_roles.md)
 - **Template** :
-  - [Script Bash](Automatisation/Script/script-template.md)
+  - [Script Bash](Automatisation/Template/script-template.md)
+  - [Playbook Ansible](Automatisation/Template/script-template.md)
 
 ---
 *Ce dépôt est maintenu activement. Pour discuter de ces implémentations ou d'opportunités professionnelles, retrouvez-moi sur [LinkedIn](https://www.linkedin.com/in/ethiksys).*
