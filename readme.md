@@ -56,4 +56,7 @@ Déploiement de solutions autohébergés.
   - [Passbolt](Services/Passbolt.md)
  
 ---
+![Dernière mise à jour](https://img.shields.io/github/last-commit/ethiksys/infrastructure)
+![Nombre de docs](https://img.shields.io/github/directory-file-count/ethiksys/infrastructure)
+
 *Ce dépôt est maintenu activement. Pour discuter de ces implémentations ou d'opportunités professionnelles, retrouvez-moi sur [LinkedIn](https://www.linkedin.com/in/ethiksys).*
