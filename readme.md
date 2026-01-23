@@ -27,7 +27,7 @@ Standardisation des déploiements.
   - [Gestion des rôles](Automatisation/Ansible/04-Gestion_des_roles.md)
 - **Template** :
   - [Script Bash](Automatisation/Template/script-bash-template.md)
-  - [Playbook Ansible](Automatisation/Template/playbook-template.md)
+  - [Playbook Ansible](Automatisation/Template/playbook-template.yml)
 
 ## 🔐 Sécurité & Réseau
 Hardening système et gestion des flux.
