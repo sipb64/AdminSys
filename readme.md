@@ -55,6 +55,7 @@ Déploiement de solutions autohébergés.
 Standardisation des déploiements.
 - **Ansible** :
   - [Installation Ansible](Automatisation/Ansible/Installation_Ubuntu.md)
+  - [Gestion de l'inventaire](Automatisation/Ansible/Gestion_inventaire.md)
 - **Template** :
   - [Script Bash](Automatisation/Script/script-template.md)
 
