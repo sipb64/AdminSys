@@ -19,11 +19,11 @@ Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes proc�
 - Gestion de solutions de containerisation (Docker/Podman)
   - [Docker / Podman](Docker-Podman/readme.md)
   
-- **Proxmox Virtual Environment (PVE)** : Stratégies de migration sans interruption de service.
+<!-- - **Proxmox Virtual Environment (PVE)** : Stratégies de migration sans interruption de service.
   - [Mise à jour majeure : PVE 8 vers 9 (POC)](Proxmox/MAJ-PVE-8to9.md)
   - [Mise à jour majeure : PVE 7 vers 8](Proxmox/MAJ-PVE-7to8.md)
 - **Proxmox Backup Server (PBS)** : Sécurisation des sauvegardes.
-  - [Mise à jour majeure : PBS 3 vers 4 (POC)](Proxmox/MAJ-PBS-3to4.md)
+  - [Mise à jour majeure : PBS 3 vers 4 (POC)](Proxmox/MAJ-PBS-3to4.md) -->
 
 ## 🔐 Sécurité & Réseau
 Hardening système et gestion des flux.
@@ -45,8 +45,7 @@ Hardening système et gestion des flux.
 ## 📦 Services Auto-hébergés
 Déploiement de solutions autohébergés.
 
-- **Nextcloud** :
-  - [Nextcloud](Services/Nextcloud/readme.md)
+- [**Nextcloud**](Services/Nextcloud/readme.md) : Solution Cloud et stockage de fichiers
 - **IA locale & Hardware Passthrough**
   - [Virtualisation GPU pour OpenWebUI (PCI Passthrough)](IA/OpenWebUI-serverGPU.md)
   - [Installation d'Ollama (Linux/Windows)](IA/Ollama.md)
