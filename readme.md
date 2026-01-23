@@ -21,13 +21,13 @@ Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes proc�
 ## ⚡ Automatisation
 Standardisation des déploiements.
 - **Ansible** :
-  - [Installation Ansible](Automatisation/Ansible/Installation_Ubuntu.md)
-  - [Gestion de l'inventaire](Automatisation/Ansible/Gestion_inventaire.md)
-  - [Projet : Structure et exemple de playbook](Automatisation/Ansible/Gestion_des_roles.md)
-  - [Gestion des rôles](Automatisation/Ansible/Gestion_des_roles.md)
+  - [Installation Ansible](Automatisation/Ansible/01-Installation_Ubuntu.md)
+  - [Gestion de l'inventaire](Automatisation/Ansible/02-Gestion_inventaire.md)
+  - [Projet : Structure et exemple de playbook](Automatisation/Ansible/03-Structure_Projet_Playbook.md)
+  - [Gestion des rôles](Automatisation/Ansible/04-Gestion_des_roles.md)
 - **Template** :
-  - [Script Bash](Automatisation/Template/script-template.md)
-  - [Playbook Ansible](Automatisation/Template/script-template.md)
+  - [Script Bash](Automatisation/Template/script-bash-template.md)
+  - [Playbook Ansible](Automatisation/Template/playbook-template.md)
 
 ## 🔐 Sécurité & Réseau
 Hardening système et gestion des flux.
