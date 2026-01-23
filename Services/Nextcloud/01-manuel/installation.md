@@ -5,8 +5,8 @@ Déploiement haute performance dans un conteneur système léger (LXC) sous Ubun
 Recommandations doc officielle
 Version : 32 (dernière stable)
 System : Ubuntu 24.04 LTS
-DataBase : MariaDB 10.11
-WebServer : Apache 2.4 with mod_php or php-fpm
+DataBase : MariaDB 11.8
+WebServer : Apache 2.4 avec php-fpm
 PHP : 8.4
 ```
 ## Préparation du système
