@@ -13,16 +13,20 @@ Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes proc�
 
 ## 🏗️ Virtualisation & Gestion du cycle de vie (MCO)
 
-
 - [Proxmox](Proxmox/readme.md) : Gestion de clusters ProxmoxVE et plans de reprise d'activité avec Proxmox Backup Server. 
 
 - [Docker](Docker/readme.md) : Gestion de solutions de containerisation
-  
-<!-- - **Proxmox Virtual Environment (PVE)** : Stratégies de migration sans interruption de service.
-  - [Mise à jour majeure : PVE 8 vers 9 (POC)](Proxmox/MAJ-PVE-8to9.md)
-  - [Mise à jour majeure : PVE 7 vers 8](Proxmox/MAJ-PVE-7to8.md)
-- **Proxmox Backup Server (PBS)** : Sécurisation des sauvegardes.
-  - [Mise à jour majeure : PBS 3 vers 4 (POC)](Proxmox/MAJ-PBS-3to4.md) -->
+
+## ⚡ Automatisation
+Standardisation des déploiements.
+- **Ansible** :
+  - [Installation Ansible](Automatisation/Ansible/Installation_Ubuntu.md)
+  - [Gestion de l'inventaire](Automatisation/Ansible/Gestion_inventaire.md)
+  - [Projet : Structure et exemple de playbook](Automatisation/Ansible/Gestion_des_roles.md)
+  - [Gestion des rôles](Automatisation/Ansible/Gestion_des_roles.md)
+- **Template** :
+  - [Script Bash](Automatisation/Template/script-template.md)
+  - [Playbook Ansible](Automatisation/Template/script-template.md)
 
 ## 🔐 Sécurité & Réseau
 Hardening système et gestion des flux.
@@ -50,17 +54,6 @@ Déploiement de solutions autohébergés.
   - [Installation d'Ollama (Linux/Windows)](IA/Ollama.md)
 - **Serveur de mots de passe**
   - [Passbolt](Services/Passbolt.md)
-  
-## ⚡ Automatisation
-Standardisation des déploiements.
-- **Ansible** :
-  - [Installation Ansible](Automatisation/Ansible/Installation_Ubuntu.md)
-  - [Gestion de l'inventaire](Automatisation/Ansible/Gestion_inventaire.md)
-  - [Projet : Structure et exemple de playbook](Automatisation/Ansible/Gestion_des_roles.md)
-  - [Gestion des rôles](Automatisation/Ansible/Gestion_des_roles.md)
-- **Template** :
-  - [Script Bash](Automatisation/Template/script-template.md)
-  - [Playbook Ansible](Automatisation/Template/script-template.md)
-
+ 
 ---
 *Ce dépôt est maintenu activement. Pour discuter de ces implémentations ou d'opportunités professionnelles, retrouvez-moi sur [LinkedIn](https://www.linkedin.com/in/ethiksys).*
