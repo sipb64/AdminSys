@@ -12,8 +12,13 @@ Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes proc�
 ---
 
 ## 🏗️ Virtualisation & Gestion du cycle de vie (MCO)
-Gestion de clusters Proxmox et plans de reprise d'activité.
 
+- Gestion de clusters ProxmoxVE et plans de reprise d'activité avec Proxmox Backup Server. 
+  - [Proxmox](Proxmox/readme.md)
+
+- Gestion de solutions de containerisation (Docker/Podman)
+  - [Docker / Podman](Docker-Podman/readme.md)
+  
 - **Proxmox Virtual Environment (PVE)** : Stratégies de migration sans interruption de service.
   - [Mise à jour majeure : PVE 8 vers 9 (POC)](Proxmox/MAJ-PVE-8to9.md)
   - [Mise à jour majeure : PVE 7 vers 8](Proxmox/MAJ-PVE-7to8.md)
