@@ -13,11 +13,10 @@ Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes proc�
 
 ## 🏗️ Virtualisation & Gestion du cycle de vie (MCO)
 
-- Gestion de clusters ProxmoxVE et plans de reprise d'activité avec Proxmox Backup Server. 
-  - [Proxmox](Proxmox/readme.md)
 
-- Gestion de solutions de containerisation (Docker/Podman)
-  - [Docker / Podman](Docker-Podman/readme.md)
+- [Proxmox](Proxmox/readme.md) : Gestion de clusters ProxmoxVE et plans de reprise d'activité avec Proxmox Backup Server. 
+
+- [Docker](Docker/readme.md) : Gestion de solutions de containerisation
   
 <!-- - **Proxmox Virtual Environment (PVE)** : Stratégies de migration sans interruption de service.
   - [Mise à jour majeure : PVE 8 vers 9 (POC)](Proxmox/MAJ-PVE-8to9.md)
@@ -55,7 +54,7 @@ Déploiement de solutions autohébergés.
 ## ⚡ Automatisation
 Standardisation des déploiements.
 - **Template** :
-  - [Script Bash](Template/script-template.md)
+  - [Script Bash](Automatisation/Script/script-template.md)
 
 ---
 *Ce dépôt est maintenu activement. Pour discuter de ces implémentations ou d'opportunités professionnelles, retrouvez-moi sur [LinkedIn](https://www.linkedin.com/in/ethiksys).*
