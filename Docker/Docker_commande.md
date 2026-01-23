@@ -65,8 +65,13 @@ docker login
 | Inspecter la config JSON (IP, Mounts...) | `docker inspect <ID>` |
 | Supprime tout ce qui n'est pas utilisé| `docker system prune -a --volumes` |
 ```bash
-# Grand nettoyage (Attention : supprime tout ce qui n'est pas utilisé)
-docker system prune -a --volumes
+# Grand nettoyage (Attention : supprime tout !)
+docker stop $(docker ps -a -q) && \
+docker rm $(docker ps -a -q) && \
+docker rmi $(docker images -q) && \
+docker volume prune -f && \
+docker network prune -f && \
+docker system prune -a -f
 ```
 
 ## Lab Express : Serveur Web Apache pour tester le port forwarding et la modification à chaud
