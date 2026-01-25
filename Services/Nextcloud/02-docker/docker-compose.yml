@@ -1,0 +1,94 @@
+services:
+  traefik:
+    image: traefik:v3
+    restart: always
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.websecure.http.tls=true"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - nc-interne
+
+  db:
+    image: mariadb:11.8-ubi
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db:/var/lib/mysql:Z
+    environment:
+      - MARIADB_AUTO_UPGRADE=1
+      - MARIADB_DISABLE_UPGRADE_BACKUP=1
+    networks:
+      - nc-interne
+    env_file:
+      - nc.env
+
+  redis:
+    image: redis:alpine
+    restart: always
+    networks:
+      - nc-interne
+
+  app:
+    image: nextcloud:fpm-alpine
+    restart: always
+    volumes:
+      - nextcloud:/var/www/html:z
+    environment:
+      - MYSQL_HOST=db
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - nc.env
+    networks:
+      - nc-interne
+
+  web:
+    image: nginx:alpine-slim
+    restart: always
+    volumes:
+      - ./web/nginx.conf:/etc/nginx/nginx.conf:ro
+      - nextcloud:/var/www/html:z,ro
+    depends_on:
+      - app
+    networks:
+      - nc-interne
+    labels:
+      - "traefik.enable=true"
+      # Remplacer 'localhost' par votre domaine local si besoin (ex: nc.local)
+#      - "traefik.http.routers.nextcloud.rule=Host(`localhost`) || Host(`nextcloud.local`)"      
+      # Règle pour tester en local (accepte n'importe quelle IP ou domaine)
+      - "traefik.http.routers.nextcloud.rule=HostRegexp(`^.+$`)"
+      - "traefik.http.routers.nextcloud.entrypoints=websecure"
+      - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.services.nextcloud.loadbalancer.server.port=80"
+
+  cron:
+    image: nextcloud:fpm-alpine
+    restart: always
+    volumes:
+      - nextcloud:/var/www/html:z
+    entrypoint: /cron.sh
+    depends_on:
+      - db
+      - redis
+    networks:
+      - nc-interne
+
+volumes:
+  db:
+  nextcloud:
+
+networks:
+  nc-interne:
