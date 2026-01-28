@@ -89,7 +89,7 @@ mon_projet_infra
     │   └── dynamic.yml
     └── traefik.yml
 ```
-### Modifier fichier de [configuration traefik](/traefik/traefik.yml)
+### Modifier fichier de configuration (/traefik/traefik.yml)
 
 #### Pour test décommenter pour utiliser le serveur de staging Let's Encrypt (génère des certificats de test) :
 ```yaml
@@ -165,7 +165,7 @@ accessLog:
       defaultMode: drop
 ```
 
-## 3. [Configuration dynamique](/traefik/dynamic/dynamic.yml) (middlewares, headers sécurité)
+## 3.  Configuration dynamique (/traefik/dynamic/dynamic.yml) (middlewares, headers sécurité)
 
 ```yaml
 # ==============================================
