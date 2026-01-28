@@ -37,7 +37,7 @@ Hardening système et gestion des flux.
   - [Gestion de certificats SSL auto-signés/publics](Reseaux/GestionSSL.md)
   - [Gestion d'OpenVPN](Reseaux/OpenVPN.md)
 - **Pare-feu & Filtrage** :
-  - [Gestion Nginx Reverse Proxy](Reseaux/ReverseProxyNginx.md)
+  - Gestion Reverse Proxy : [Nginx](Reseaux/ReverseProxy-LoadBalancing/Nginx.md), [Traefik](Reseaux/ReverseProxy-LoadBalancing/Traefik_v3.md)
   - [Règles iptables de base pour serveurs Linux](Reseaux/Iptables.md)
   - [Optimisation réseau : Gestion IPv6](Reseaux/DisableIPv6_linux.md)
 - **Cybersécurité**: 
