@@ -18,42 +18,42 @@ services:
     networks:
       - internal
 
-traefik:
+  traefik:
     image: traefik:v3
     container_name: ${PROJECT_NAME}_traefik
     restart: unless-stopped
     security_opt:
-      - no-new-privileges:true
+    - no-new-privileges:true
     ports:
-      - "80:80"     # HTTP
-      - "443:443"   # HTTPS
-      - "8080:8080" # Dashboard (à protéger)
+    - "80:80"     # HTTP
+    - "443:443"   # HTTPS
+    - "8080:8080" # Dashboard (à protéger)
     environment:
-      - TZ=Europe/Paris
-      - TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL=${LETSENCRYPT_EMAIL}
+    - TZ=Europe/Paris
+    - TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL=${LETSENCRYPT_EMAIL}
     logging:
-      driver: "json-file"
-      options:
+    driver: "json-file"
+    options:
         max-size: "10m"
         max-file: "3"
     volumes:
 #      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik/traefik.yml:/traefik.yml:ro
-      - ./traefik/dynamic:/dynamic:ro
-      - traefik_certificates:/certificates
+    - ./traefik/traefik.yml:/traefik.yml:ro
+    - ./traefik/dynamic:/dynamic:ro
+    - traefik_certificates:/certificates
     networks:
-      - web
-      - internal
+    - web
+    - internal
     labels:
-      - "traefik.enable=true"
-      # Dashboard
-      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)"
-      - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.traefik.service=api@internal"
-      - "traefik.http.routers.traefik.middlewares=traefik-auth"
-      # Basic Auth pour dashboard
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=${TRAEFIK_DASHBOARD_USER}:${TRAEFIK_DASHBOARD_PASSWORD}"
+    - "traefik.enable=true"
+    # Dashboard
+    - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)"
+    - "traefik.http.routers.traefik.entrypoints=websecure"
+    - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
+    - "traefik.http.routers.traefik.service=api@internal"
+    - "traefik.http.routers.traefik.middlewares=traefik-auth"
+    # Basic Auth pour dashboard
+    - "traefik.http.middlewares.traefik-auth.basicauth.users=${TRAEFIK_DASHBOARD_USER}:${TRAEFIK_DASHBOARD_PASSWORD}"
 
   grafana:
     image: grafana/grafana:latest
@@ -79,6 +79,27 @@ traefik:
       - "traefik.http.routers.grafana.tls=true"
       - "traefik.http.routers.grafana.tls.certresolver=letsencrypt"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
+
+# ==============================================
+# NETWORKS
+# ==============================================
+networks:
+  web:
+    name: ${PROJECT_NAME}_web
+    driver: bridge
+  internal:
+    name: ${PROJECT_NAME}_internal
+    driver: bridge
+    internal: true
+
+# ==============================================
+# VOLUMES PERSISTANTS
+# ==============================================
+volumes:
+  traefik_certificates:
+    name: ${PROJECT_NAME}_traefik_certs
+  grafana_data:
+    name: ${PROJECT_NAME}_grafana_data
 ```
 ## 2. A personnalisation de la configuration de Traefik
 ### Structure des fichiers
