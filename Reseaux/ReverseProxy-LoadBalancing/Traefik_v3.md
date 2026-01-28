@@ -1,5 +1,13 @@
 # Traefik v3 - Configuration Complète (Docker + Let's Encrypt)
-
+### Structure des fichiers
+```text
+mon_projet_infra/
+│── traefik
+│   ├── dynamic
+│   │   └── dynamic.yml
+│   └── traefik.yml
+└── docker-compose.yml
+```
 ## 1. Exemple de déploiement Docker Compose avec socket proxy
 ```yaml
 services:
@@ -74,15 +82,8 @@ volumes:
   traefik_certificates:
     name: ${PROJECT_NAME}_traefik_certs
 ```
-## 2. A personnalisation de la configuration de Traefik
-### Structure des fichiers
-```text
-mon_projet_infra
-└── traefik
-    ├── dynamic
-    │   └── dynamic.yml
-    └── traefik.yml
-```
+## 2. Personnalisation de la configuration de Traefik
+
 ### Modifier fichier de configuration (/traefik/traefik.yml)
 
 #### Pour test décommenter pour utiliser le serveur de staging Let's Encrypt (génère des certificats de test) :
@@ -135,7 +136,7 @@ providers:
 certificatesResolvers:
   letsencrypt:
     acme:
-      email: ethiksys@ik.me  # Change avec ton vrai email
+      email: mailadmin@domaine.me  # Change avec ton vrai email
       storage: /certificates/acme.json
       # Pour tests : utilise le staging (pas de limite de rate)
       caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
@@ -159,7 +160,7 @@ accessLog:
       defaultMode: drop
 ```
 
-## 3.  Configuration dynamique (/traefik/dynamic/dynamic.yml) (middlewares, headers sécurité)
+## 3. Configuration dynamique (/traefik/dynamic/dynamic.yml) (middlewares, headers sécurité)
 
 ```yaml
 # ==============================================
@@ -208,7 +209,7 @@ http:
         certResolver: letsencrypt
 ```
 ## 4. Générer le mot de passe
-## Utiliser htpasswd et génèrer le hash pour le user "admin" avec le mot de passe et le mettre dans le .env 
+### Utiliser htpasswd et génèrer le hash pour le user "admin" avec le mot de passe et le mettre dans le .env 
 ```bash
 sudo apt install -y apache2-utils
 # (doubler les $ du hash ex: admin:$$apr1$$xyz123)
