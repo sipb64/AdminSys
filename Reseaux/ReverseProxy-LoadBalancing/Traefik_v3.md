@@ -55,31 +55,6 @@ services:
     # Basic Auth pour dashboard
     - "traefik.http.middlewares.traefik-auth.basicauth.users=${TRAEFIK_DASHBOARD_USER}:${TRAEFIK_DASHBOARD_PASSWORD}"
 
-  grafana:
-    image: grafana/grafana:latest
-    container_name: ${PROJECT_NAME}_grafana
-    restart: unless-stopped
-    environment:
-      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
-      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
-      GF_INSTALL_PLUGINS: grafana-clock-panel
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./monitoring/grafana:/etc/grafana/provisioning:ro
-    depends_on:
-      - prometheus
-    networks:
-      - web
-      - internal
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=${PROJECT_NAME}_web"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.${DOMAIN}`)"
-      - "traefik.http.routers.grafana.entrypoints=websecure"
-      - "traefik.http.routers.grafana.tls=true"
-      - "traefik.http.routers.grafana.tls.certresolver=letsencrypt"
-      - "traefik.http.services.grafana.loadbalancer.server.port=3000"
-
 # ==============================================
 # NETWORKS
 # ==============================================
@@ -98,8 +73,6 @@ networks:
 volumes:
   traefik_certificates:
     name: ${PROJECT_NAME}_traefik_certs
-  grafana_data:
-    name: ${PROJECT_NAME}_grafana_data
 ```
 ## 2. A personnalisation de la configuration de Traefik
 ### Structure des fichiers
