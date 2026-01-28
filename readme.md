@@ -46,7 +46,7 @@ Hardening système et gestion des flux.
 - **Gestion et Supervision**: 
   - [Zabbix LTS](Supervision/ZabbixLTS.md)
   - [GLPI](Supervision/GLPI.md) : Gestionnaire de Parc
-  - [Supervision Multiservices](Supervision/Monitoring&Alertes.md)
+  - [Supervision Multi-services](Supervision/Monitoring&Alertes.md)
 
 ## 📦 Services Auto-hébergés
 Déploiement de solutions autohébergés.
