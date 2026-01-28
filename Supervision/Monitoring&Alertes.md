@@ -1,4 +1,4 @@
-# Monitoring et alertes - Configuration Complète (Docker, Grafana, Prometheus, cAdvisor, node_exporter, )
+# Monitoring et alertes - Configuration Complète (Docker, Grafana, Prometheus, cAdvisor, node_exporter, alertmanager)
 ###  Structure des fichiers
 ```text
 mon_projet_infra/
