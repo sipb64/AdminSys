@@ -34,14 +34,14 @@ Hardening système et gestion des flux.
 
 - **Cryptographie & Accès** :
   - [Gestion des clés SSH](SSH/Gestionclessh.md)
-  - [Gestion de certificats SSL auto-signés/publics](Réseaux/GestionSSL.md)
-  - [Gestion d'OpenVPN](Réseaux/OpenVPN.md)
+  - [Gestion de certificats SSL auto-signés/publics](Reseaux/GestionSSL.md)
+  - [Gestion d'OpenVPN](Reseaux/OpenVPN.md)
 - **Pare-feu & Filtrage** :
-  - [Gestion Nginx Reverse Proxy](Réseaux/ReverseProxyNginx.md)
-  - [Règles iptables de base pour serveurs Linux](Réseaux/Iptables.md)
-  - [Optimisation réseau : Gestion IPv6](Réseaux/DisableIPv6_linux.md)
+  - [Gestion Nginx Reverse Proxy](Reseaux/ReverseProxyNginx.md)
+  - [Règles iptables de base pour serveurs Linux](Reseaux/Iptables.md)
+  - [Optimisation réseau : Gestion IPv6](Reseaux/DisableIPv6_linux.md)
 - **Cybersécurité**: 
-  - [Wazuh SIEM/XDR](Sécurité/Wazuh.md)
+  - [Wazuh SIEM/XDR](Securite/Wazuh.md)
 - **Gestion et Supervision**: 
   - [Zabbix LTS](Supervision/ZabbixLTS.md)
   - [GLPI](Supervision/GLPI.md)
