@@ -41,6 +41,7 @@ Hardening système et gestion des flux.
   - [Règles iptables de base pour serveurs Linux](Reseaux/Iptables.md)
   - [Optimisation réseau : Gestion IPv6](Reseaux/DisableIPv6_linux.md)
 - **Cybersécurité**: 
+  - [Sécurisation de base](Securite/Securisation_De_Base_Linux.md)
   - [Wazuh SIEM/XDR](Securite/Wazuh.md)
 - **Gestion et Supervision**: 
   - [Zabbix LTS](Supervision/ZabbixLTS.md)
