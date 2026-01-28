@@ -84,7 +84,15 @@ sudo systemctl restart ssh
 # ssh -p 6464 deploy@IP_SERVEUR
 ```
 
-
+## 6. Astuce
+### Débannir tout le monde
+```bash
+fail2ban-client unban --all
+```
+### Envoyer un rapport quotidien des journaux système par mail
+```bash
+logwatch --mailto mail@mail.me 
+```
 
 
 
