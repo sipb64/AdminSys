@@ -1,3 +1,4 @@
+# CI/CD : Build & Push Docker vers GHCR (GitHub Packages)
 ###  Structure des fichiers
 ```text
 mon_app/
@@ -7,7 +8,7 @@ mon_app/
 ├── Dockerfile
 └── index.html   
 ```
-## 1. Workflow dans .github/workflows/build-push.yml
+## Workflow dans .github/workflows/build-push.yml
 ```text
 Ce workflow se déclenche sur chaque push vers main. Il fait :
 - 1 : Build de l'image Docker.
