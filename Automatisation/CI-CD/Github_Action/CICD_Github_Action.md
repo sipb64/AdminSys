@@ -19,7 +19,7 @@ cat ~/.ssh/github_action
 ### Dans le dépôt GitHub : Settings > Secrets and variables > Actions > New repository secret.
 | Nom du Secret | Valeur                                                     |
 | ------------- | ---------------------------------------------------------- |
-| VPS_IP        | IP ddu serveur (ex: 123.45.67.89)             |
+| VPS_IP        | IP du serveur (ex: 123.45.67.89)             |
 | VPS_USER      | deploy                                                     |
 | VPS_SSH_KEY   | Coller contenu de la clé PRIVÉE  |
 | VPS_PORT      | 6464 (Si le port SSH à été changé)   |
