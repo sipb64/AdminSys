@@ -26,7 +26,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-
+  IMAGE_NAME: ${{ github.repository }} # ethiksys/build_registry_app
+  
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
