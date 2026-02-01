@@ -1,14 +1,26 @@
-# Infrastructure VPN, CLient & Routage Avancé (OpenVPN)
+# Gestion VPN, Client & Routage Avancé (OpenVPN)
 
 ## 1. Coté Serveur (Installation et Gestion)
-### Installation des dépendances
+### Installation
 ```bash
 apt update && apt install -y curl
-```
-### Téléchargement du script
-```bash
 curl -O https://raw.githubusercontent.com/Angristan/openvpn-install/master/openvpn-install.sh
 chmod +x openvpn-install.sh
+```
+### Sécurisation & Pare-feu (UFW)
+```bash
+# 1. Autoriser le port VPN (UDP 1194)
+sudo ufw allow 1194/udp comment 'OpenVPN Access'
+
+# 2. Autoriser le trafic depuis le Tunnel vers le LAN
+sudo ufw allow from 192.168.5.0/24 to 10.0.0.0/24 comment 'VPN to LAN'
+
+# 3. (Important) Configuration du NAT dans /etc/ufw/before.rules
+# Ajouter en haut du fichier :
+# *nat
+# :POSTROUTING ACCEPT [0:0]
+# -A POSTROUTING -s 192.168.5.0/24 -o eth0 -j MASQUERADE
+# COMMIT
 ```
 ### Déploiement non-interactif (Exemple de variables)
 ```bash
@@ -19,98 +31,87 @@ export APPROVE_IP=$(curl -s ifconfig.me)
 export ENDPOINT=$APPROVE_IP
 export PORT_CHOICE=1   # Port par défaut (1194)
 export PROTOCOL_CHOICE=1 # UDP (recommandé) ou 2 pour TCP
-export DNS=1 # 1=Current, 3=Cloudflare, 9=Google
+export DNS=1 # 1=Actuel, 3=Cloudflare, 9=Google
 export COMPRESSION_ENABLED=n
 export CUSTOMIZE_ENC=n # Garder le chiffrement fort par défaut (AES-256-GCM)
-```
-### Lancer l'installation
-```bash
+
+# Lancer l'installation
 ./openvpn-install.sh install
-```
-### Gestion du serveur
-```bash
+
+# Gestion du serveur
 ./openvpn-install.sh interactive
-```
-### Gestion des Clients
-```bash
+
+# Ajout d'un client
 ./openvpn-install.sh client add client_nom
 ```
+
 ### Administration du Service
-#### Vérifier le statut
 ```bash
+# Vérifier le statut
 systemctl status openvpn@server
-```
+
 #### Redémarrer le service
-```bash
 systemctl restart openvpn@server
-```
+
 #### Logs (Debug connexion)
-```bash
 journalctl -u openvpn@server -f
 ```
 ### Maintenance PKI (Easy-RSA)
-### Audit des certificats
-#### Vérifier la validité du certificat SERVEUR
+#### Audit des certificats
 ```bash
+# Vérifier la validité du certificat SERVEUR
 openssl x509 -in /etc/openvpn/server.crt -noout -dates
-```
-#### Vérifier la validité de l'autorité de certification (CA) - CRITIQUE
-```bash
+
+# Vérifier la validité de l'autorité de certification (CA)
 openssl x509 -in /etc/openvpn/ca.crt -noout -enddate
-```
-#### Vérifier un certificat CLIENT spécifique
-```bash
+
+# Vérifier un certificat CLIENT spécifique
 openssl x509 -in /etc/openvpn/easy-rsa/pki/issued/client_nom.crt -noout -enddate
 ```
 
 #### Renouvellement du Certificat Serveur (erreur TLS Handshake)
 ```bash
 cd /etc/openvpn/easy-rsa/
-```
-#### Renouveler le certificat 'server_NAME' par le Common Name (CN) réel du serveur
+
+# Renouveler le certificat 'server_NAME' par le Common Name (CN) réel du serveur
 ```bash
 ./easyrsa renew server_NAME nopass
-```
-#### Copie du certificat public
-```bash
+
+# Copie du certificat public
 cp pki/issued/server_NAME.crt /etc/openvpn/server/
-```
-#### Copie de la clé privée (si régénérée)
-```bash
+
+# Copie de la clé privée (si régénérée)
 cp pki/private/server_NAME.key /etc/openvpn/server/
-```
-#### Sécuriser et Redémarrer
-```bash
+
+# Sécuriser et Redémarrer
 chmod 600 /etc/openvpn/server/server_NAME.key
 systemctl restart openvpn@server
 ```
+
 #### Renouvellement du certificat d'autorité
 ```bash
 cd /etc/openvpn/easy-rsa/
-```
-#### Renouveler la CA (EasyRSA v3) ne change pas la clé privée, juste la date de fin du CRT. L'envoi du nouveau ca.crt ou regénérer les fichiers clients est nécessaire.
-```bash
+
+# Renouveler la CA (EasyRSA v3) ne change pas la clé privée, juste la date de fin du CRT. L'envoi du nouveau ca.crt ou regénérer les fichiers clients est nécessaire.
 ./easyrsa build-ca nopass subca
-```
-#### Remplacer la CA du serveur
-```bash
+
+# Remplacer la CA du serveur
 cp pki/ca.crt /etc/openvpn/
-```
-#### Redémarrer
-```bash
+
+# Redémarrer
 systemctl restart openvpn@server
 ```
+
 #### Renouvellement d'un Client
 ```bash
 cd /etc/openvpn/easy-rsa/
 ./easyrsa renew client_nom nopass
-```
-#### Récupérer le nouveau certificat pour le client et intégrer dans son fichier .ovpn ou lui envoyer
-```bash
+# Récupérer le nouveau certificat pour le client et intégrer dans son fichier .ovpn ou lui envoyer
 cat pki/issued/client_nom.crt
 ```
+
 ### Configuration Réseau (/etc/openvpn/server.conf)
-Pour éviter les conflits avec les box internet domestiques (souvent en 192.168.0.x ou 1.x), utiliser un sous-réseau dédié pour le tunnel.
+Pour éviter les conflits avec les box internet (souvent en 192.168.0.x ou 1.x), utiliser un sous-réseau dédié pour le tunnel.
 
 ```nginx
 port 1194
@@ -144,37 +145,12 @@ verb 3
 
 ## 2. Coté Client (Linux)
 
-## Installation de paquet pour network manager
+### Installation de paquet pour network manager
 ```bash
 sudo apt install openvpn network-manager-openvpn network-manager-openvpn-gnome
 ```
 
-### Routage IP
-```bash
-# 1. Activer l'IP Forwarding de manière persistante
-echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p
-
-# 2. Vérification
-cat /proc/sys/net/ipv4/ip_forward # Doit retourner 1
-```
-## Sécurisation & Pare-feu (UFW)
-```bash
-# 1. Autoriser le port VPN (UDP 1194)
-sudo ufw allow 1194/udp comment 'OpenVPN Access'
-
-# 2. Autoriser le trafic depuis le Tunnel vers le LAN
-sudo ufw allow from 192.168.5.0/24 to 10.0.0.0/24 comment 'VPN to LAN'
-
-# 3. (Important) Configuration du NAT dans /etc/ufw/before.rules
-# Ajouter en haut du fichier :
-# *nat
-# :POSTROUTING ACCEPT [0:0]
-# -A POSTROUTING -s 192.168.5.0/24 -o eth0 -j MASQUERADE
-# COMMIT
-```
-
-## 3. Automatisation Client (Linux Mint/Ubuntu)
+### Automatisation Client (Linux Mint/Ubuntu)
 ```bash
 #!/bin/bash
 # Connecter le VPN en ligne de commande
@@ -194,7 +170,7 @@ echo "OK ! VPN démarré en arrière-plan."
 sudo openvpn /etc/openvpn/monfichier.ovpn
 sudo systemctl enable openvpn@monfichier
 ```
-## Lanceurs d'applications".
+### Lanceurs d'application
 ```text
 Cliquez sur le bouton "Ajouter" pour créer un nouveau lanceur. Remplissez les champs suivants :
 
@@ -202,7 +178,7 @@ Type : Application
 Nom : OpenVPN Connect
 Commande : /chemin/vers/openvpn-connect.sh
 ```
-## 4. Troubleshooting & Diagnostic Réseau
+## 3. Troubleshooting & Diagnostic Réseau
 
 Résolution des problèmes fréquents rencontrés en production (DNS, Routage).
 
@@ -212,3 +188,4 @@ Résolution des problèmes fréquents rencontrés en production (DNS, Routage).
 | **Accès LAN impossible** | Le client n'a pas la route ou le serveur ne fait pas de NAT. | 1. Vérifier le forwarding (`sysctl`).<br>2. Vérifier le NAT (`iptables -t nat -L`).<br>3. Vérifier la route client (`ip route | grep tun0`). |
 | **Connexion instable** | MTU trop élevé pour le réseau intermédiaire. | Ajouter `mssfix 1420` dans la config serveur et client. |
 | **Erreur TLS Handshake** | Horloge système désynchronisée ou port bloqué. | Vérifier `date` sur le serveur et le client. Vérifier UFW. |
+|**Perte d'Internet lors de la connexion VPN**|Le serveur force le "Full Tunneling" (redirect-gateway) mais ne gère pas le NAT sortant.|**Serveur** : Commenter push "redirect-gateway" et utiliser push "route ..." (Split Tunneling).<br>**Client** :<br>1. Activer l'IP Forwarding de manière persistante<br>`echo "net.ipv4.ip_forward=1"`<br>`sudo tee -a /etc/sysctl.conf`<br>`sudo sysctl -p`<br>2. Vérification<br>`cat /proc/sys/net/ipv4/ip_forward # Doit retourner 1`|
