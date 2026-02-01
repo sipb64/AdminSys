@@ -1,8 +1,7 @@
 # Gestion des solutions Proxmox
 
----
+
 ## **Proxmox Virtual Environment (PVE)** : 
----
 Plateforme de virtualisation open-source qui permet de gérer des machines virtuelles (VM) et des conteneurs.
 
 #### Caractéristiques :
@@ -31,7 +30,7 @@ Plateforme de virtualisation open-source qui permet de gérer des machines virtu
   - [Mise à jour majeure : PVE 7 vers 8](Virtual_Environment/MAJ-PVE-7to8.md)
 ---
 ## **Proxmox Backup Server (PBS)** : 
----
+
 Proxmox Backup Server (PBS) est une solution de sauvegarde open-source conçue pour offrir une gestion efficace et sécurisée des sauvegardes de machines virtuelles, de conteneurs et d'autres types de données.
 
 #### Caractéristiques principales :
@@ -54,8 +53,9 @@ Proxmox Backup Server (PBS) est une solution de sauvegarde open-source conçue p
 - **Sauvegarde de machines virtuelles et de conteneurs** 
 - **Sauvegarde de données critiques**
 - **Environnements de développement**
----
 
+---
 ### Maintenance
 - Sécurisation des sauvegardes.
   - [Mise à jour majeure : PBS 3 vers 4 (POC)](Backup_Server/MAJ-PBS-3to4.md)
+---
