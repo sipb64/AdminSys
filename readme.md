@@ -14,9 +14,9 @@ Bienvenue sur ma base de connaissance technique. Ce dépôt centralise mes proc�
 
 ## 🏗️ Virtualisation & Gestion du cycle de vie (MCO)
 
-- [Proxmox](Proxmox/readme.md) : Gestion de clusters ProxmoxVE et plans de reprise d'activité avec Proxmox Backup Server. 
+- [**Proxmox**](Proxmox/readme.md) : Gestion de clusters ProxmoxVE et plans de reprise d'activité avec Proxmox Backup Server. 
 
-- [Docker](Docker/readme.md) : Gestion de solutions de containerisation
+- [**Docker**](Docker/readme.md) : Gestion de solutions de containerisation
 
 ## ⚡ Automatisation
 Standardisation des déploiements.
@@ -49,14 +49,15 @@ Hardening système et gestion des flux.
   - [Supervision Multi-services](Supervision/Monitoring&Alertes.md)
 
 ## 📦 Services Auto-hébergés
-Déploiement de solutions autohébergés.
+Déploiement et gestion de solutions autohébergés.
 
-- [**Nextcloud**](Services/Nextcloud/readme.md) : Solution Cloud et stockage de fichiers
+- Solution Cloud et stockage de fichiers : [Nextcloud](Services/Nextcloud/readme.md)
+- Gestion de base de données : [PostgreSQL](Services/Base_de_données/PostgreSQL.md), [MariaDB](Services/Base_de_données/MariaDB.md), [Redis](Services/Base_de_données/Redis.md)
+- Serveur de mots de passe : [Passbolt](Services/Passbolt.md)
+
 - **IA locale & Hardware Passthrough**
   - [Virtualisation GPU pour OpenWebUI (PCI Passthrough)](IA/OpenWebUI-serverGPU.md)
   - [Installation d'Ollama (Linux/Windows)](IA/Ollama.md)
-- **Serveur de mots de passe**
-  - [Passbolt](Services/Passbolt.md)
  
 ---
 ![Dernière mise à jour](https://img.shields.io/github/last-commit/ethiksys/infrastructure)
