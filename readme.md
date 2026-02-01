@@ -38,7 +38,7 @@ Hardening système et gestion des flux.
   - [Gestion d'OpenVPN](Reseaux/OpenVPN.md)
 - **Pare-feu & Filtrage** :
   - Gestion Reverse Proxy : [Nginx](Reseaux/ReverseProxy-LoadBalancing/Nginx.md), [Traefik](Reseaux/ReverseProxy-LoadBalancing/Traefik_v3.md)
-  - Parefeu : [iptables](Reseaux/Parefeu/Iptables.md), [ufw](Reseaux/Parefeu/ufw.md)
+  - Gestion Pare-feu : [iptables](Reseaux/Parefeu/Iptables.md), [ufw](Reseaux/Parefeu/ufw.md)
   - [Optimisation réseau : Gestion IPv6](Reseaux/DisableIPv6_linux.md)
 - **Cybersécurité**: 
   - [Sécurisation de base](Securite/Securisation_De_Base_Linux.md)
