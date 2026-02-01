@@ -1,23 +1,23 @@
 #!/bin/bash
 
-set -e
-
 # ==============================================================================
 # TITRE          : DURCISSEMENT SERVEUR (Debian/Ubuntu)
-# DESCRIPTION    : Basé sur les recommandations ANSSI / CIS Benchmark
+# DESCRIPTION    : Basé sur les recommandations ANSSI
 # AUTEUR         : ethiksys
-# DATE           : 2026-01-21
-# VERSION        : 1.0.0
-# USAGE          : sudo ./hardening_debian.sh
+# DATE           : 2026-02-01
+# VERSION        : 2.3.0
+# USAGE          : À exécuter sur une nouvelle installation 
+#                  sudo ./hardening_debian.sh
 # ==============================================================================
 
+set -e
 
 echo ">>> Démarrage du durcissement système..."
 
 # 1. MISE A JOUR SYSTÈME
 echo "[+] Mise à jour complète..."
 apt update && apt full-upgrade -y
-apt install -y sudo curl wget ufw fail2ban rsyslog aide auditd
+apt install -y curl wget ufw fail2ban rsyslog aide auditd
 
 # 2. GESTION UTILISATEUR & SUDO
 echo "[+] Sécurisation des comptes..."
@@ -32,12 +32,11 @@ cp $SSHD_CONF "$SSHD_CONF.bak"
 # Désactiver root login et auth par mot de passe
 sed -i 's/^#*PermitRootLogin.*/PermitRootLogin no/' $SSHD_CONF
 sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' $SSHD_CONF
-# shellcheck disable=SC1017
 sed -i 's/^#*ChallengeResponseAuthentication.*/ChallengeResponseAuthentication no/' $SSHD_CONF
 sed -i 's/^#*X11Forwarding.*/X11Forwarding no/' $SSHD_CONF
 
 # Validation et redémarrage
-sshd -t && systemctl restart sshd
+sshd -t && systemctl restart ssh
 
 # 4. PARE-FEU (UFW)
 echo "[+] Configuration Pare-feu (UFW)..."
