@@ -218,7 +218,7 @@ providers:
 ```
 
 ### Proposition de dashboard à placer dans le dossier (/monitoring/grafana/dashboard)
-- 193 - [Docker monitoring](https://grafana.com/grafana/dashboards/193-docker-monitoring/) (à importer manuellement si la source ne se charge pas coreectement)
+- 193 - [Docker monitoring](https://grafana.com/grafana/dashboards/193-docker-monitoring/) (à importer manuellement si la source ne se charge pas correctement)
 - 1860 - [Node Exporter Full](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
 
 ## 4. Gestion des alertes via alert manager
@@ -246,7 +246,7 @@ receivers:
       - to: 'ton-email@k-u.fr'
         send_resolved: true # Envoie un mail quand c'est résolu
         headers:
-          Subject: "🔥 Alerte Infra: {{ .CommonAnnotations.summary }}"
+          Subject: "Alerte Infra: {{ .CommonAnnotations.summary }}"
 
   # Exemple pour plus tard (Slack/Discord/Telegram)
   # - name: 'slack-notifications'
