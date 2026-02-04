@@ -1,5 +1,4 @@
-# Gestion des solutions Proxmox
-
+# **Gestion des solutions Proxmox**
 
 ## **Proxmox Virtual Environment (PVE)** : 
 Plateforme de virtualisation open-source qui permet de gérer des machines virtuelles (VM) et des conteneurs.
@@ -19,16 +18,14 @@ Plateforme de virtualisation open-source qui permet de gérer des machines virtu
 - **Évolutivité** : Gestion des infrastructures de petite à grande taille.
 - **Communauté active** : Simplifie la résolution des problèmes et l'accès à des ressources supplémentaires.
 
-#### Utilisations :
-- **Centres de données**
-- **Environnements de développement**
-- **Infrastructure en tant que service (IaaS)** 
----
-### Maintenance
-- Stratégies de migration sans interruption de service.
+### **Maintenance**
+- Stratégies de mise à niveau sans interruption de service :
   - [Mise à jour majeure : PVE 8 vers 9 (POC)](Virtual_Environment/MAJ-PVE-8to9.md)
   - [Mise à jour majeure : PVE 7 vers 8](Virtual_Environment/MAJ-PVE-7to8.md)
----
+- Maintenance ou procédures diverses :
+  - [Migration du VM virtualbox vers Proxmox](Virtual_Environment/MigrationOVA.md)
+  - [Gestion avancée LXC](Virtual_Environment/Gestion_LXC.md)
+
 ## **Proxmox Backup Server (PBS)** : 
 
 Proxmox Backup Server (PBS) est une solution de sauvegarde open-source conçue pour offrir une gestion efficace et sécurisée des sauvegardes de machines virtuelles, de conteneurs et d'autres types de données.
@@ -49,13 +46,7 @@ Proxmox Backup Server (PBS) est une solution de sauvegarde open-source conçue p
 - **Sécurité** : Sécurisation contre les accès non autorisés.
 - **Facilité d'utilisation** : Gestion des sauvegardes et des restaurations simplifiée.
 
-#### Utilisations :
-- **Sauvegarde de machines virtuelles et de conteneurs** 
-- **Sauvegarde de données critiques**
-- **Environnements de développement**
-
 ---
-### Maintenance
-- Sécurisation des sauvegardes.
+### **Maintenance**
+- Stratégies de mise à niveau sans interruption de service :
   - [Mise à jour majeure : PBS 3 vers 4 (POC)](Backup_Server/MAJ-PBS-3to4.md)
----
