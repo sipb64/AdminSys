@@ -85,8 +85,8 @@ jobs:
 # Image légère (Alpine Linux)
 FROM httpd:2.4-alpine
 
-# Métadonnées (Bonne pratique)
-LABEL maintainer="Ton Nom <ton@email.com>"
+# Métadonnées
+LABEL maintainer="Nom <Nom@email.com>"
 LABEL version="1.0"
 LABEL description="Serveur Web Apache basique"
 
@@ -116,7 +116,7 @@ EXPOSE 80
 </head>
 <body>
     <div class="card">
-        <h1>🚀 It Works!</h1>
+        <h1>Ca fonctionne !</h1>
         <p>Container ID: <script>document.write(window.location.hostname)</script></p>
         <span class="badge">GHCR + Actions</span>
     </div>

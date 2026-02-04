@@ -2,7 +2,7 @@
 Installer des paquets de base, créer un utilisateur et déployer sa clé SSH.
 ## Structure du Projet
 ```bash
-# Créer l'arborescence dans votre home
+# Créer l'arborescence dans home
 mkdir -p ~/ansible/projet1
 cd ~/ansible/projet1
 ```

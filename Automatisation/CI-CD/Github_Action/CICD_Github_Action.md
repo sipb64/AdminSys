@@ -24,10 +24,10 @@ cat ~/.ssh/github_action
 ### Dans le dépôt GitHub : Settings > Secrets and variables > Actions > New repository secret.
 | Nom du Secret | Valeur                                                     |
 | ------------- | ---------------------------------------------------------- |
-| VPS_IP        | IP du serveur (ex: 123.45.67.89)             |
+| VPS_IP        | IP du serveur (ex: 123.45.67.89)                           |
 | VPS_USER      | deploy                                                     |
-| VPS_SSH_KEY   | Coller contenu de la clé PRIVÉE  |
-| VPS_PORT      | 6464 (Si le port SSH à été changé)   |
+| VPS_SSH_KEY   | Coller contenu de la clé PRIVÉE                            |
+| VPS_PORT      | 6464 (Si le port SSH à été changé)                         |
 
 ## 3. Pipeline (.github/workflows/deploy.yml)
 ```yaml
@@ -58,8 +58,8 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }} # Pour gerer le port SSH custom
           source: "." # Copie tout le repo
           target: ${{ env.TARGET_DIR }}
-          # On exclut le dossier .git et .github pour ne pas polluer le serveur
-          rm: true # Nettoie le dossier cible avant copie (attention si tu as des fichiers persistants non-volumes !)
+          # Exclure le dossier .git et .github pour ne pas polluer le serveur
+          rm: true # Nettoie le dossier cible avant copie (attention aux fichiers persistants non-volumes !)
           strip_components: 0
           overwrite: true
 
@@ -70,7 +70,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
-          # On injecte les secrets ENV directement ici pour reconstruire le .env
+          # Injection des secrets ENV directement pour reconstruire le .env
           #script_stop_on_error: true
           #: GRAFANA_PWD,TRAEFIK_EMAIL # Liste des variables à passer du secret GitHub vers le script
           script: |
