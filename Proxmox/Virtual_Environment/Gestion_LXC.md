@@ -24,18 +24,21 @@ pct destroy <vmid>
 # Vérifier le statut
 pct status <vmid>
 
-
 # Si bloqué (status running/stopping bloqué), utiliser `stop` pour tuer les processus.
 pct stop <vmid>
 
 # Si le conteneur est "stopped" mais impossible à supprimer (backup dispo): 
 # Vérifier s'il y a un fichier de lock
 ls -l /var/lock/lxc/pve-config-<vmid>.lock
+
 # Le supprimer manuellement 
 rm /var/lock/lxc/pve-config-<vmid>.lock
 
+# Forcer le déverrouillage du conteneur
+pct unlock <vmid>
+
 # Supprimer le conteneur
-pct destroy <vmid>
+pct destroy <vmid> --purge
 ```
 
 ## 3. Convertir "Unprivileged" vers "Privileged"
