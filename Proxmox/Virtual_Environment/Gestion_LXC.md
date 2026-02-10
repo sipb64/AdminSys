@@ -55,12 +55,19 @@ pct stop <vmid>
 vzdump <vmid>
 
 # Détruire le conteneur original
-pct destroy 105
+pct destroy <vmid>
 
 # Restaurer avec le flag Privileged `--unprivileged 0`
 pct restore <vmid> <chemin_backup> --unprivileged 0 --storage <pool>
 # exemple pct restore 105 /var/lib/vz/dump/vzdump-lxc-105-2024...zst --unprivileged 0 --storage local-lvm
 
 # Vérification, doit retourner : unprivileged: 0
-pct config 105 | grep unprivileged
+pct config <vmid> | grep unprivileged
+```
+
+## 4. Erreur de restauration (Missing size info)
+```bash
+# Utiliser le CLI pour forcer le paramètre --rootfs
+pct restore <vmid> <source_backup> --rootfs <stockage_cible>:<taille_en_GB>
+# Ex : pct restore 112 BACKUP:backup/ct/111/2026-02-09T22:02:55Z --rootfs local-lvm:40
 ```
