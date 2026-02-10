@@ -27,17 +27,14 @@ pct status <vmid>
 # Si bloqué (status running/stopping bloqué), utiliser `stop` pour tuer les processus.
 pct stop <vmid>
 
-# Si le conteneur est "stopped" mais impossible à supprimer (backup dispo): 
-# Vérifier s'il y a un fichier de lock
-ls -l /var/lock/lxc/pve-config-<vmid>.lock
-
-# Le supprimer manuellement 
-rm /var/lock/lxc/pve-config-<vmid>.lock
-
-# Forcer le déverrouillage du conteneur
+# Déverrouillage du conteneur (locked)
 pct unlock <vmid>
 
-# Supprimer le conteneur
+# Force : Si "pct unlock" échoue, supprimer le fichier de lock manuellement 
+ls -l /var/lock/lxc/pve-config-<vmid>.lock
+rm /var/lock/lxc/pve-config-<vmid>.lock
+
+# Supprimer le conteneur et les configs résiduelles
 pct destroy <vmid> --purge
 ```
 
