@@ -2,7 +2,7 @@
 ## Structure du Projet
 ```text
 .
-├── .env                     # Secrets à personnaliser (MySQL)
+├── .env                     # A personnaliser
 ├── docker-compose.yml       # Orchestrateur
 └── seaweedfs/
     └── s3.json
