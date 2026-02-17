@@ -51,7 +51,7 @@ Hardening système et gestion des flux.
 ## 📦 Services Auto-hébergés
 Déploiement et gestion de solutions autohébergés.
 
-- Solution Cloud et stockage de fichiers : [Nextcloud](Services/Nextcloud/readme.md)
+- Solution Cloud et stockage de fichiers : [Nextcloud](Services/Nextcloud/readme.md), [S3 - SeaweedFS](Services/S3-SeaweedFS.md)
 - Gestion de base de données : [PostgreSQL](Services/Base_de_données/PostgreSQL.md), [MariaDB](Services/Base_de_données/MariaDB.md), [Redis](Services/Base_de_données/Redis.md)
 - Serveur de mots de passe : [Passbolt](Services/Passbolt.md)
 

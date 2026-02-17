@@ -90,7 +90,7 @@ mon_projet_infra/
     # ports:
     #   - "8081:8080"
     networks:
-      internal: null
+      - internal
     restart: unless-stopped
 
 
@@ -109,7 +109,7 @@ mon_projet_infra/
     # ports:
     #   - "9100:9100"
     networks:
-      internal: null
+      - internal
     restart: unless-stopped
 
   # ==============================================
@@ -127,6 +127,7 @@ mon_projet_infra/
       - alertmanager_data:/alertmanager
     networks:
       - internal
+      - external
     #   - web # Nécessaire si tu veux accéder à l'UI via Traefik
     # labels:
     #   - "traefik.enable=true"
@@ -147,6 +148,9 @@ networks:
     name: ${PROJECT_NAME}_internal
     driver: bridge
     internal: true
+  external: # Accès réseau externe pour l'envoie de mail via Alertmanager
+    name: ${PROJECT_NAME}_external
+    driver: bridge
 
 # ==============================================
 # VOLUMES PERSISTANTS

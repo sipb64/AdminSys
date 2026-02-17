@@ -7,7 +7,6 @@ nextcloud-stack/
 ├── nc.env                   # Secrets à personnaliser (MySQL)
 └── web/
     └── nginx.conf           # Config Nginx
-
 ```
 ### Fichiers utilisés | [docker-compose.yml](./docker-compose.yml) | [nginx.conf](./web/nginx.conf) | [nc.env](./nc.env) |
 
