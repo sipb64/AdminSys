@@ -104,7 +104,9 @@ volumes:
 source .env
 
 # Alias temporaire
-alias aws-s3='docker run --rm -i --network ${PROJECT_NAME}_internal \
+alias aws-s3='docker run --rm -i \
+  -v $(pwd):/aws \
+  --network ${PROJECT_NAME}_internal \
   -e AWS_ACCESS_KEY_ID=${S3_ACCESS_KEY} \
   -e AWS_SECRET_ACCESS_KEY=${S3_SECRET_KEY} \
   -e AWS_DEFAULT_REGION=${S3_REGION} \
