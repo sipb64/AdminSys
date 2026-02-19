@@ -35,9 +35,10 @@ docker compose exec app php occ config:system:set trusted_proxies 2 --value="192
 docker compose exec app php occ config:system:set forwarded_for_headers 0 --value="HTTP_X_FORWARDED_FOR"
 docker compose exec app php occ config:system:set overwriteprotocol --value="https"
 
-# 3. Paramètres Régionaux & Maintenance
+# 3. Paramètres Régionaux, Maintenance, Authentification deux facteurs
 docker compose exec app php occ config:system:set default_phone_region --value="FR"
 docker compose exec app php occ config:system:set maintenance_window_start --type=integer --value=2
+docker compose exec app php occ config:system:set twofactor_enforced --value="true"
 ```
 
 ### Domaine (Optionnel)

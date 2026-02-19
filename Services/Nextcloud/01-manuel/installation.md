@@ -178,12 +178,13 @@ WantedBy=timers.target
 ```bash
 systemctl enable --now nextcloud-cron.timer
 ```
-### Ajout Heure de maintenance-Prefix Tel
+### Ajout Heure de maintenance - Prefix Tel - 2FA
 #### Modifier et ajouter à /var/www/nextcloud/config/config.php
 ```php
   'maintenance_window_start' => '01:00',
   'maintenance_window_duration' => 7200,
   'default_phone_region' => 'FR',
+  'twofactor_enforced' => 'true',
 ```
 ## Commandes Utiles
 ### Commande de réparations et de vérifications
